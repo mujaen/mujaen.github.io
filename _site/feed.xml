@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-05T16:09:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무 중심 브이로그.</subtitle><entry><title type="html">Hydejack Post Writing Tips &amp;amp; Tricks</title><link href="http://localhost:4000/blog/2020/07/05/hydejack-post-writing-tips-tricks.html" rel="alternate" type="text/html" title="Hydejack Post Writing Tips &amp;amp; Tricks" /><published>2020-07-05T00:00:00+09:00</published><updated>2020-07-05T00:00:00+09:00</updated><id>http://localhost:4000/blog/2020/07/05/hydejack-post-writing-tips-tricks</id><content type="html" xml:base="http://localhost:4000/blog/2020/07/05/hydejack-post-writing-tips-tricks.html">&lt;p&gt;Hydejack 테마를 이용하여 포스트를 작성할때 참고할 syntax 입니다.&lt;/p&gt;
+
+&lt;!--more--&gt;
+
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#build&quot; id=&quot;markdown-toc-build&quot;&gt;Build&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#update&quot; id=&quot;markdown-toc-update&quot;&gt;update&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#writing&quot; id=&quot;markdown-toc-writing&quot;&gt;Writing&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-a-table-of-contents&quot; id=&quot;markdown-toc-adding-a-table-of-contents&quot;&gt;Adding a table of contents&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-notes&quot; id=&quot;markdown-toc-adding-notes&quot;&gt;Adding notes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-large-text&quot; id=&quot;markdown-toc-adding-large-text&quot;&gt;Adding large text&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#changing-image-size&quot; id=&quot;markdown-toc-changing-image-size&quot;&gt;Changing image size&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-image-captions&quot; id=&quot;markdown-toc-adding-image-captions&quot;&gt;Adding image captions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-large-quotes&quot; id=&quot;markdown-toc-adding-large-quotes&quot;&gt;Adding large quotes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-faded-text&quot; id=&quot;markdown-toc-adding-faded-text&quot;&gt;Adding faded text&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#adding-captions&quot; id=&quot;markdown-toc-adding-captions&quot;&gt;Adding captions&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#small-tables&quot; id=&quot;markdown-toc-small-tables&quot;&gt;Small tables&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;
+
+&lt;h3 id=&quot;update&quot;&gt;update&lt;/h3&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle update
+
+bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h2 id=&quot;writing&quot;&gt;Writing&lt;/h2&gt;
+
+&lt;h3 id=&quot;adding-a-table-of-contents&quot;&gt;Adding a table of contents&lt;/h3&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; this unordered seed list will be replaced by the toc
+{:toc}
+&lt;span class=&quot;p&quot;&gt;
+1.&lt;/span&gt; this ordered seed list will be replaced by the toc
+{:toc}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-notes&quot;&gt;Adding notes&lt;/h3&gt;
+
+&lt;p&gt;You can add a note by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;note&lt;/code&gt; class to a paragraph.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p class=&quot;note&quot;&gt;You can add a note.&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You can add a note.
+{:.note}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;note&lt;/code&gt; key in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data/strings.yml&lt;/code&gt; to change the wording of the default label.
+To add a note with a specific label, add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; attribute:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A custom label.
+{:.note title=&quot;Attention&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p class=&quot;note&quot; title=&quot;Attention&quot;&gt;A custom label.&lt;/p&gt;
+
+&lt;h3 id=&quot;adding-large-text&quot;&gt;Adding large text&lt;/h3&gt;
+
+&lt;p&gt;You can add large text by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lead&lt;/code&gt; class to the paragraph.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p class=&quot;lead&quot;&gt;You can add large text.&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You can add large text.
+{:.lead}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;changing-image-size&quot;&gt;Changing image size&lt;/h3&gt;
+
+&lt;p&gt;You can change image size by adding css style to the paragraph after the image:&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x100&quot; alt=&quot;Half-width image&quot; width=&quot;400&quot; height=&quot;50&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Half-width image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{: width=&quot;400&quot; height=&quot;50&quot;}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-image-captions&quot;&gt;Adding image captions&lt;/h3&gt;
+
+&lt;p&gt;You can add captions to large images by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figcaption&lt;/code&gt; class to the paragraph after the image:&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x100&quot; alt=&quot;Full-width image&quot; class=&quot;lead&quot; width=&quot;800&quot; height=&quot;100&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;An optional caption for an image.&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Full-width image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{:.lead width=&quot;800&quot; height=&quot;100&quot; loading=&quot;lazy&quot;}
+
+A caption for an image.
+{:.figcaption}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-large-quotes&quot;&gt;Adding large quotes&lt;/h3&gt;
+
+&lt;p&gt;You can make a quote “pop out” by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lead&lt;/code&gt; class.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;blockquote class=&quot;lead&quot;&gt;
+  &lt;p&gt;You can make a quote “pop out”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; You can make a quote &quot;pop out&quot;.&lt;/span&gt;
+{:.lead}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-faded-text&quot;&gt;Adding faded text&lt;/h3&gt;
+
+&lt;p&gt;You can gray out text by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;faded&lt;/code&gt; class. Use this sparingly and for information that is not essential, as it is more difficult to read.&lt;/p&gt;
+
+&lt;p&gt;Example:&lt;/p&gt;
+
+&lt;p class=&quot;faded&quot;&gt;I’m faded, faded, faded.&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I'm faded, faded, faded.
+{:.faded}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;adding-captions&quot;&gt;Adding captions&lt;/h3&gt;
+
+&lt;p&gt;Just like images, you can add captions to tables by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figcaption&lt;/code&gt; class to the paragraph after the table.&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;An optional caption for a table/image/code block
+{:.figcaption}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;small-tables&quot;&gt;Small tables&lt;/h3&gt;
+
+&lt;p&gt;If a table is small enough to fit the screen even on small screens, you can add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stretch-table&lt;/code&gt; class
+to force a table to use the entire available content width. Note that stretched tables can no longer be scrolled.&lt;/p&gt;
+
+&lt;table class=&quot;stretch-table&quot;&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Default aligned&lt;/th&gt;
+      &lt;th style=&quot;text-align: left&quot;&gt;Left aligned&lt;/th&gt;
+      &lt;th style=&quot;text-align: center&quot;&gt;Center aligned&lt;/th&gt;
+      &lt;th style=&quot;text-align: right&quot;&gt;Right aligned&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;First body part&lt;/td&gt;
+      &lt;td style=&quot;text-align: left&quot;&gt;Second cell&lt;/td&gt;
+      &lt;td style=&quot;text-align: center&quot;&gt;Third cell&lt;/td&gt;
+      &lt;td style=&quot;text-align: right&quot;&gt;fourth cell&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p class=&quot;figcaption&quot;&gt;An optional caption for a table&lt;/p&gt;
+
+&lt;p&gt;You can add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stretch-table&lt;/code&gt; class to a markdown table by putting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{:.stretch-table}&lt;/code&gt; in line directly below the table.&lt;/p&gt;
+
+&lt;p&gt;Markdown:&lt;/p&gt;
+
+&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| Default aligned |Left aligned| Center aligned  | Right aligned  |
+|-----------------|:-----------|:---------------:|---------------:|
+| First body part |Second cell | Third cell      | fourth cell    |
+{:.stretch-table}
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="blog" /><category term="blog" /><summary type="html">Hydejack 테마를 이용하여 포스트를 작성할때 참고할 syntax 입니다.</summary></entry></feed>
