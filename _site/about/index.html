@@ -40,7 +40,7 @@ Powered by Hydejack v9.0.5 <https://hydejack.com/>
     
 
 <title>About | Jinjer's Blog</title>
-<meta name="description" content="실무 중심 브이로그.
+<meta name="description" content="실무에 도움되는 개발자 기술블로그.
 ">
 <link rel="canonical" href="http://localhost:4000/about/">
 
@@ -295,11 +295,15 @@ based on the jekyll theme <a href="https://hydejack.com">Hydejack</a>.</p>
     <div class="sidebar-sticky">
   <div class="sidebar-about">
     
+      <a class="no-hover" href="/" tabindex="-1">
+        <img src="/assets/img/jinjer.png" class="avatar" alt="Jinjer's Blog" width="120" height="120" loading="lazy" />
+      </a>
+    
     <a class="sidebar-title" href="/"><h2 class="h1">Jinjer's Blog</h2></a>
     
     
       <p class="">
-        실무 중심 브이로그.
+        실무에 도움되는<br /> 개발자 기술블로그.
 
       </p>
     
@@ -311,28 +315,60 @@ based on the jekyll theme <a href="https://hydejack.com">Hydejack</a>.</p>
   
   
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   <li>
-    <a
-            id="_drawer--opened"
-            href="/about/"
-            class="sidebar-nav-item "
-            
-    >
-      About
-    </a>
+    
+    <div class="list-wrapper">
+      <a  href="/about/" class="sidebar-nav-item"  >About</a>
+      
+    </div>
+    
   </li>
   
   
+  
+  
+  
+  
+  
   <li>
-    <a
-            
-            href="/blog/"
-            class="sidebar-nav-item "
-            
-    >
-      Blog
-    </a>
+    
+    <input type="checkbox" id="list-item-10" />
+    
+    <div class="list-wrapper">
+      <a  href="/blog/" class="sidebar-nav-item"  >Blog</a>
+      
+      <label class="folder" for="list-item-10">▾</label>
+      
+    </div>
+    
+    <ul class="list-body">
+    <li>
+      <a class="sidebar-nav-subitem" href="/tag-nodejs/">Node.js</a>
+    </li>
+    
+    
+    
+    <li>
+      <a class="sidebar-nav-subitem" href="/tag-aws/">AWS</a>
+    </li>
+    </ul>
+    
   </li>
+  
+  
   
   
 </ul>
