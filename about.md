@@ -6,57 +6,33 @@ sidebar: true
 order: 1
 ---
 
-# Hello, World!
+# Are you ready?
 
-Hi, I'm **DaeIn Lee**, *a.k.a.* **Lazy Ren**.<br>
-I'm currently working at **[Samsung Research](https://research.samsung.com/)**, and previsouly was CSE student of **[Hanyang University](https://www.hanyang.ac.kr/)**.<br>
-I like to solve brain teasing problems in field of CSE (probably the reason I liked multi-core programming / OS courses).<br>
-And I'm also a [heavy gamer](https://steamcommunity.com/id/lazyren)!<br>
-Pleaseh check my [resume](/resume/) if you wish to know more about me.
+안녕하세요! 기술 블로그를 운영하고 있는 진저 김민호입니다<br>
+저는 컴퓨터과학을 전공했고 현재는 프론트엔드개발자로 일하고 있습니다<br>
+최근에는 서버 개발에 흥미가 생겨 공부 중이며 올해 서비스앱을 출시할 목표를 갖고 있습니다<br>
+저랑 같이 배우고 실무에 적용해봅시다! 렛츠 기릿
 
-***
 
 <!--posts_list-->
 
 ***
 
-## Work Hard to be Lazy
+## 인생의 모토.
 
-_My motto to live by._
+_Better late than Never!_
 
-> “Working hard to be lazy basically means investing the extra effort (working hard) at first so that it will pay off in the long run (be lazy).”
+> “내가 너무 늦은 건 아닐까? 하고 망설이다가 기회를 놓친 경험이 있다면 고민하지 말고 일단 시작하세요.<br>출발점이 다를 뿐 늦은 시작은 없습니다”
 
-## Re-evaluate your work processes
+## 꾸준함
 
-The lazy man will try to accomplish 2 hours worth of work in 1 hour’s time but sometimes at the expense of the work’s quality.<br>
-Think of it as **efficiency = quality/time** taken (referencing speed = distance/over).<br>
-If the time taken is reduced, either the job’s quality has to be lowered or the efficiency must be increased. Efficiency really relates to the work process.<br>
-So in order to keep the quality the same and reduce the time taken, the work process must be changed.
+무슨 일이든 잘하기 위해서는 반복적인 연마가 필요하죠. 개발도 예외는 없습니다 <br>
+특히 새로운 기술이 끊임없이 나오는 우리 분야에서는 꾸준한 자기성장만이 실력 있는 개발자를 만듭니다
 
-## Don’t repeat yourself
 
-After evaluating what you do, you may have some ideas of what you want to improve or modify.<br>
-Break it down to its core.
+## 시너지
 
-## Try a new process
+주된 취미로 단편 소설을 쓰고 있습니다 소설을 쓰다보니 불필요한 내용을 덜어내고 다듬어야 하는데 <br>
+이런 습관이 보다 깔끔한 코드로 리팩토링 하는데 큰 도움이 되는 것 같네요
 
-Be open to completely changing the way you work.<br>
-You can’t expect to become more productive unless you pay a price at first.
 
-## Refine yourself
-
-By refining yourself I mean going through this work hard to be lazy process in iterations.<br>
-Try a new process, if that doesn’t help as much as you hoped, try another process.<br>
-The worst thing that could happen is that you don’t find any improvement in your work process and go back to your original process and just work hard.<br>
-Did you lose anything?
-
-[original post](http://blog.vivekmahbubani.com/2007/03/work-hard-to-be-lazy.html)<br>
-
-***
-
-Blog created by DaeIn Lee on July 19. 2018 in Vancouver,<br>
-based on the jekyll theme [Hydejack](https://hydejack.com).
-
-***
-
-<!--author-->
