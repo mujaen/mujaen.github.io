@@ -1,5 +1,5 @@
 ---
 layout: list
-title:  Welcome
+title:  What's new
 cover:  true
 ---
