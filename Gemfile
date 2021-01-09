@@ -19,15 +19,22 @@ gem "github-pages", group: :jekyll_plugins
 
 # If you have any plugins, put them here!
 group :jekyll_plugins do
-  gem "jekyll-feed"
-  gem "jekyll-paginate"
-  gem "jekyll-readme-index"
-  gem "jekyll-redirect-from"
-  gem "jekyll-relative-links"
-  gem "jekyll-sitemap"
-  gem "jekyll-titles-from-headings"
-  gem "jekyll-include-cache"
-  gem "kramdown-parser-gfm"
+  	gem 'jekyll'
+	gem 'jekyll-default-layout'
+	gem 'jekyll-feed'
+	gem 'jekyll-optional-front-matter'
+	gem 'jekyll-paginate'
+	gem 'jekyll-readme-index'
+	gem 'jekyll-redirect-from'
+	gem 'jekyll-relative-links'
+	gem 'jekyll-seo-tag'
+	gem 'jekyll-sitemap'
+	gem 'jekyll-titles-from-headings'
+	gem 'jekyll-include-cache', git: 'https://github.com/hydecorp/jekyll-include-cache'
+
+	# Non-Github Pages plugins:
+	gem 'jekyll-last-modified-at'
+	gem 'jekyll-compose'
 end
 
 # Windows and JRuby does not include zoneinfo files, so bundle the tzinfo-data gem
