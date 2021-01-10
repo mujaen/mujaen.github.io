@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)"
-description: "Node.js + MongoDB 데이터베이스 연결"
+title: "Node.js(Express)로 MongoDB(Mongoose) 연결하기(3)"
+description: "Node.js + MongoDB 데이터 CRUD"
 category: blog
 tags: nodejs
 ---
@@ -15,7 +15,7 @@ tags: nodejs
 데이터베이스를 관리하는 시스템(DBMS)에게 명령을 주고받아 DB의 데이터를 조작해야 하는데  
 이때, DBMS가 사용자의 요청을 이해할 수 있도록 도와주는 언어가 바로 SQL이죠 대표적으로 MySQL이 있습니다   
 MongoDB는 NoSQL, 도큐먼트 지향 데이터베이스 시스템입니다. 이 둘의 특징과 차이점은 이번 포스팅에서 다루지 않습니다   
-DB를 만들고 Mongoose로 서버에 연결하는 내용을 진행 하도록 하겠습니다.
+DB를 만들고 서버에 연결해서 데이터를 CRUD하는 내용을 진행 하도록 하겠습니다.
 
 
 ### Create Account
@@ -64,9 +64,9 @@ npm install mongoose
 ```
 
 
-### App.js
+### app.js
 
-설치가 완료 되면 이제 서버에 DB를 연결해 줄 겁니다. 루트의 app.js 파일을 열고 require로 Mongoose 모듈을 불러옵니다.    
+Mongoose가 설치되었다면 이제 서버에 DB를 연결해 줄 겁니다. require로 Mongoose 모듈을 불러옵니다.  
 아래의 DB 연결 부분을 봐주세요 저는 url을 변수로 사용하여 이전에 복사했던 코드를 넣어줄 겁니다.  
 id와 password는 가입할 때 사용했던 그대로 입력해 줍니다. dbname은 사용하고자 하는 DB의 Collection명 입니다.  
 
@@ -105,8 +105,6 @@ db.once('open', function() {
 ```
 
 > connect 메서드를 사용하여 DB에 연결합니다 이때, 문자열 처리 관련해서 여러 매개 변수를 옵션으로 지정할 수 있습니다
-
-### Results
 
 모든 작업이 완료되었다면 터미널을 열어 'npm start' 명령을 입력하여 서버를 구동시켜 봅니다    
 DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력되는 것을 확인할 수 있습니다!  

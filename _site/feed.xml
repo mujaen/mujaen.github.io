@@ -1,11 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-10T08:58:20+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)</title><link href="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)" /><published>2021-01-08T00:00:00+09:00</published><updated>2021-01-09T17:09:34+09:00</updated><id>http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-10T10:52:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(3)</title><link href="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(3)" /><published>2021-01-10T00:00:00+09:00</published><updated>2021-01-10T10:34:46+09:00</updated><id>http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#mongodb&quot; id=&quot;markdown-toc-mongodb&quot;&gt;MongoDB&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#create-account&quot; id=&quot;markdown-toc-create-account&quot;&gt;Create Account&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#create-cluster&quot; id=&quot;markdown-toc-create-cluster&quot;&gt;Create Cluster&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#connect-to-cluster&quot; id=&quot;markdown-toc-connect-to-cluster&quot;&gt;Connect to Cluster&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mongoose&quot; id=&quot;markdown-toc-mongoose&quot;&gt;Mongoose&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mongoose&quot; id=&quot;markdown-toc-mongoose&quot;&gt;Mongoose&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#install-mongoose&quot; id=&quot;markdown-toc-install-mongoose&quot;&gt;Install Mongoose&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs&quot; id=&quot;markdown-toc-appjs&quot;&gt;app.js&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h2 id=&quot;mongodb&quot;&gt;MongoDB&lt;/h2&gt;
@@ -45,194 +49,193 @@ IP를 입력해주고 DB에 사용될 아이디와 패스워드를 입력해 줍
 &lt;p&gt;마지막 단계입니다. 드라이버와 버전을 확인하고 우측의 Copy 버튼을 눌러 코드를 복사합니다&lt;br /&gt;
 Mongoose를 사용하여 복사한 코드를 입력해 서버와 DB를 연결할 겁니다&lt;/p&gt;
 
-&lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">Hydejack Post Writing Tips &amp;amp; Tricks</title><link href="http://localhost:4000/blog/2021/01/05/aws-project.html" rel="alternate" type="text/html" title="Hydejack Post Writing Tips &amp;amp; Tricks" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-09T17:09:34+09:00</updated><id>http://localhost:4000/blog/2021/01/05/aws-project</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/aws-project.html">&lt;p&gt;Hydejack 테마를 이용하여 포스트를 작성할때 참고할 syntax 입니다.&lt;/p&gt;
+&lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;
 
-&lt;!--more--&gt;
+&lt;p&gt;&lt;a href=&quot;https://mongoosejs.com/docs/guide.html&quot;&gt;Mongoose&lt;/a&gt;는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.  &lt;br /&gt;
+문서를 객체와 매칭한다 해서 ODM(Object Document Mapping)이라 하죠.&lt;br /&gt;
+Mongoose의 장점은 Express에 스키마와 모델을 적용할 수 있다는 장점이 있고&lt;br /&gt;
+그로 인하여 Collection을 수월하게 관리할 수 있다는 점 외에도 여러 기능이 있습니다.&lt;/p&gt;
 
-&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#build&quot; id=&quot;markdown-toc-build&quot;&gt;Build&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#update&quot; id=&quot;markdown-toc-update&quot;&gt;update&lt;/a&gt;&lt;/li&gt;
+&lt;h3 id=&quot;install-mongoose&quot;&gt;Install Mongoose&lt;/h3&gt;
+
+&lt;p&gt;express 폴더를 열어주세요 이전 포스팅 그대로 이어서 진행하겠습니다.    &lt;br /&gt;
+터미널을 열고 아래의 명령어를 입력하여 Mongoose를 설치해 주세요&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mongoose
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;appjs&quot;&gt;app.js&lt;/h3&gt;
+
+&lt;p&gt;Mongoose가 설치되었다면 이제 서버에 DB를 연결해 줄 겁니다. require로 Mongoose 모듈을 불러옵니다.&lt;br /&gt;
+아래의 DB 연결 부분을 봐주세요 저는 url을 변수로 사용하여 이전에 복사했던 코드를 넣어줄 겁니다.&lt;br /&gt;
+id와 password는 가입할 때 사용했던 그대로 입력해 줍니다. dbname은 사용하고자 하는 DB의 Collection명 입니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./routes/app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//express 설정&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;view engine&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pug&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//서버 연결&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Express server has started on port 3000&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;//DB 연결&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mongodb+srv://id:password@cluster0.dml5n.mongodb.net/dbname&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;useUnifiedTopology&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;useNewUrlParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// DB 연결 실패&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connection Failed!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// DB 연결 성공&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connected!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;connect 메서드를 사용하여 DB에 연결합니다 이때, 문자열 처리 관련해서 여러 매개 변수를 옵션으로 지정할 수 있습니다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;모든 작업이 완료되었다면 터미널을 열어 ‘npm start’ 명령을 입력하여 서버를 구동시켜 봅니다  &lt;br /&gt;
+DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력되는 것을 확인할 수 있습니다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/terminal.png&quot; alt=&quot;Check Console Message&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)</title><link href="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)" /><published>2021-01-08T00:00:00+09:00</published><updated>2021-01-10T10:38:49+09:00</updated><id>http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#mongodb&quot; id=&quot;markdown-toc-mongodb&quot;&gt;MongoDB&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-account&quot; id=&quot;markdown-toc-create-account&quot;&gt;Create Account&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#create-cluster&quot; id=&quot;markdown-toc-create-cluster&quot;&gt;Create Cluster&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#connect-to-cluster&quot; id=&quot;markdown-toc-connect-to-cluster&quot;&gt;Connect to Cluster&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#writing&quot; id=&quot;markdown-toc-writing&quot;&gt;Writing&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-a-table-of-contents&quot; id=&quot;markdown-toc-adding-a-table-of-contents&quot;&gt;Adding a table of contents&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-notes&quot; id=&quot;markdown-toc-adding-notes&quot;&gt;Adding notes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-large-text&quot; id=&quot;markdown-toc-adding-large-text&quot;&gt;Adding large text&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#changing-image-size&quot; id=&quot;markdown-toc-changing-image-size&quot;&gt;Changing image size&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-image-captions&quot; id=&quot;markdown-toc-adding-image-captions&quot;&gt;Adding image captions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-large-quotes&quot; id=&quot;markdown-toc-adding-large-quotes&quot;&gt;Adding large quotes&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-faded-text&quot; id=&quot;markdown-toc-adding-faded-text&quot;&gt;Adding faded text&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#adding-captions&quot; id=&quot;markdown-toc-adding-captions&quot;&gt;Adding captions&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#small-tables&quot; id=&quot;markdown-toc-small-tables&quot;&gt;Small tables&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#mongoose&quot; id=&quot;markdown-toc-mongoose&quot;&gt;Mongoose&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#install-mongoose&quot; id=&quot;markdown-toc-install-mongoose&quot;&gt;Install Mongoose&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs&quot; id=&quot;markdown-toc-appjs&quot;&gt;App.js&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#results&quot; id=&quot;markdown-toc-results&quot;&gt;Results&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;
+&lt;h2 id=&quot;mongodb&quot;&gt;MongoDB&lt;/h2&gt;
 
-&lt;h3 id=&quot;update&quot;&gt;update&lt;/h3&gt;
+&lt;p&gt;데이터베이스를 관리하는 시스템(DBMS)에게 명령을 주고받아 DB의 데이터를 조작해야 하는데&lt;br /&gt;
+이때, DBMS가 사용자의 요청을 이해할 수 있도록 도와주는 언어가 바로 SQL이죠 대표적으로 MySQL이 있습니다 &lt;br /&gt;
+MongoDB는 NoSQL, 도큐먼트 지향 데이터베이스 시스템입니다. 이 둘의 특징과 차이점은 이번 포스팅에서 다루지 않습니다 &lt;br /&gt;
+DB를 만들고 Mongoose로 서버에 연결하는 내용을 진행 하도록 하겠습니다.&lt;/p&gt;
 
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;bundle update
+&lt;h3 id=&quot;create-account&quot;&gt;Create Account&lt;/h3&gt;
 
-bundle &lt;span class=&quot;nb&quot;&gt;exec &lt;/span&gt;jekyll serve
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;데이터베이스 생성을 위해 &lt;a href=&quot;https://www.mongodb.com/&quot;&gt;MongoDB&lt;/a&gt;에 접속해 주세요 &lt;br /&gt;
+저는 공부 목적이므로 Start free 버튼을 눌러 무료용으로 계정 가입을 할 겁니다.&lt;/p&gt;
 
-&lt;h2 id=&quot;writing&quot;&gt;Writing&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/join.png&quot; alt=&quot;Start Free&quot; /&gt;&lt;/p&gt;
 
-&lt;h3 id=&quot;adding-a-table-of-contents&quot;&gt;Adding a table of contents&lt;/h3&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;*&lt;/span&gt; this unordered seed list will be replaced by the toc
-{:toc}
-&lt;span class=&quot;p&quot;&gt;
-1.&lt;/span&gt; this ordered seed list will be replaced by the toc
-{:toc}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-notes&quot;&gt;Adding notes&lt;/h3&gt;
-
-&lt;p&gt;You can add a note by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;note&lt;/code&gt; class to a paragraph.&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;p class=&quot;note&quot;&gt;You can add a note.&lt;/p&gt;
-
-&lt;p&gt;Markdown:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You can add a note.
-{:.note}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;Edit the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;note&lt;/code&gt; key in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;_data/strings.yml&lt;/code&gt; to change the wording of the default label.
-To add a note with a specific label, add a &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;title&lt;/code&gt; attribute:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;A custom label.
-{:.note title=&quot;Attention&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p class=&quot;note&quot; title=&quot;Attention&quot;&gt;A custom label.&lt;/p&gt;
-
-&lt;h3 id=&quot;adding-large-text&quot;&gt;Adding large text&lt;/h3&gt;
-
-&lt;p&gt;You can add large text by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lead&lt;/code&gt; class to the paragraph.&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;p class=&quot;lead&quot;&gt;You can add large text.&lt;/p&gt;
-
-&lt;p&gt;Markdown:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;You can add large text.
-{:.lead}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;changing-image-size&quot;&gt;Changing image size&lt;/h3&gt;
-
-&lt;p&gt;You can change image size by adding css style to the paragraph after the image:&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x100&quot; alt=&quot;Half-width image&quot; width=&quot;400&quot; height=&quot;50&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;Markdown:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Half-width image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{: width=&quot;400&quot; height=&quot;50&quot;}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-image-captions&quot;&gt;Adding image captions&lt;/h3&gt;
-
-&lt;p&gt;You can add captions to large images by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figcaption&lt;/code&gt; class to the paragraph after the image:&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;https://placehold.it/800x100&quot; alt=&quot;Full-width image&quot; class=&quot;lead&quot; width=&quot;800&quot; height=&quot;100&quot; loading=&quot;lazy&quot; /&gt;&lt;/p&gt;
-
-&lt;p class=&quot;figcaption&quot;&gt;An optional caption for an image.&lt;/p&gt;
-
-&lt;p&gt;Markdown:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;![&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt;Full-width image&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;](&lt;/span&gt;&lt;span class=&quot;sx&quot;&gt;https://placehold.it/800x100&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;{:.lead width=&quot;800&quot; height=&quot;100&quot; loading=&quot;lazy&quot;}
-
-A caption for an image.
-{:.figcaption}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h3 id=&quot;adding-large-quotes&quot;&gt;Adding large quotes&lt;/h3&gt;
-
-&lt;p&gt;You can make a quote “pop out” by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;lead&lt;/code&gt; class.&lt;/p&gt;
-
-&lt;p&gt;Example:&lt;/p&gt;
-
-&lt;blockquote class=&quot;lead&quot;&gt;
-  &lt;p&gt;You can make a quote “pop out”.&lt;/p&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;MongoDB는 현재기준 무료계정으로 가입 시 512MB의 저장소를 제공하고 있습니다!&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;p&gt;Markdown:&lt;/p&gt;
+&lt;h3 id=&quot;create-cluster&quot;&gt;Create Cluster&lt;/h3&gt;
 
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;gt&quot;&gt;&amp;gt; You can make a quote &quot;pop out&quot;.&lt;/span&gt;
-{:.lead}
+&lt;p&gt;계정을 생성한 뒤 build a Cluster 버튼을 눌러 새로운 클러스트를 만들어 줍니다.&lt;br /&gt;
+클라우드를 선택하는 화면이 나오면 원하는 옵션을 선택합니다. 저는 AWS로 선택하고 진행하겠습니다. &lt;br /&gt;
+대략 5-10분 정도 지나면 클러스터가 생성됩니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/connect.png&quot; alt=&quot;Create a New Cluster&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;connect-to-cluster&quot;&gt;Connect to Cluster&lt;/h3&gt;
+
+&lt;p&gt;화면 중간에 SANDBOX 영역에서 CONNECT 버튼을 눌러 레이어창이 나오면 단계별로 진행합니다.   &lt;br /&gt;
+IP를 입력해주고 DB에 사용될 아이디와 패스워드를 입력해 줍니다.&lt;br /&gt;
+다음 단계로 넘어가면 애플리케이션 연결(Connect your Application)을 눌러줍니다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/code.png&quot; alt=&quot;Create a New Cluster&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;마지막 단계입니다. 드라이버와 버전을 확인하고 우측의 Copy 버튼을 눌러 코드를 복사합니다&lt;br /&gt;
+Mongoose를 사용하여 복사한 코드를 입력해 서버와 DB를 연결할 겁니다&lt;/p&gt;
+
+&lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://mongoosejs.com/docs/guide.html&quot;&gt;Mongoose&lt;/a&gt;는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.  &lt;br /&gt;
+문서를 객체와 매칭한다 해서 ODM(Object Document Mapping)이라 하죠.&lt;br /&gt;
+Mongoose의 장점은 Express에 스키마와 모델을 적용할 수 있다는 장점이 있고&lt;br /&gt;
+그로 인하여 Collection을 수월하게 관리할 수 있다는 점 외에도 여러 기능이 있습니다.&lt;/p&gt;
+
+&lt;h3 id=&quot;install-mongoose&quot;&gt;Install Mongoose&lt;/h3&gt;
+
+&lt;p&gt;express 폴더를 열어주세요 이전 포스팅 그대로 이어서 진행하겠습니다.    &lt;br /&gt;
+터미널을 열고 아래의 명령어를 입력하여 Mongoose를 설치해 주세요&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mongoose
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;adding-faded-text&quot;&gt;Adding faded text&lt;/h3&gt;
+&lt;h3 id=&quot;appjs&quot;&gt;App.js&lt;/h3&gt;
 
-&lt;p&gt;You can gray out text by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;faded&lt;/code&gt; class. Use this sparingly and for information that is not essential, as it is more difficult to read.&lt;/p&gt;
+&lt;p&gt;설치가 완료 되면 이제 서버에 DB를 연결해 줄 겁니다. 루트의 app.js 파일을 열고 require로 Mongoose 모듈을 불러옵니다.  &lt;br /&gt;
+아래의 DB 연결 부분을 봐주세요 저는 url을 변수로 사용하여 이전에 복사했던 코드를 넣어줄 겁니다.&lt;br /&gt;
+id와 password는 가입할 때 사용했던 그대로 입력해 줍니다. dbname은 사용하고자 하는 DB의 Collection명 입니다.&lt;/p&gt;
 
-&lt;p&gt;Example:&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./routes/app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-&lt;p class=&quot;faded&quot;&gt;I’m faded, faded, faded.&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//express 설정&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;view engine&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pug&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
-&lt;p&gt;Markdown:&lt;/p&gt;
+&lt;span class=&quot;c1&quot;&gt;//서버 연결&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Express server has started on port 3000&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;I'm faded, faded, faded.
-{:.faded}
+&lt;span class=&quot;c1&quot;&gt;//DB 연결&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mongodb+srv://id:password@cluster0.dml5n.mongodb.net/dbname&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;useUnifiedTopology&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;useNewUrlParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// DB 연결 실패&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connection Failed!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// DB 연결 성공&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connected!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;adding-captions&quot;&gt;Adding captions&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;connect 메서드를 사용하여 DB에 연결합니다 이때, 문자열 처리 관련해서 여러 매개 변수를 옵션으로 지정할 수 있습니다&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;Just like images, you can add captions to tables by adding the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;figcaption&lt;/code&gt; class to the paragraph after the table.&lt;/p&gt;
+&lt;h3 id=&quot;results&quot;&gt;Results&lt;/h3&gt;
 
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;An optional caption for a table/image/code block
-{:.figcaption}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;모든 작업이 완료되었다면 터미널을 열어 ‘npm start’ 명령을 입력하여 서버를 구동시켜 봅니다  &lt;br /&gt;
+DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력되는 것을 확인할 수 있습니다!&lt;/p&gt;
 
-&lt;h3 id=&quot;small-tables&quot;&gt;Small tables&lt;/h3&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/terminal.png&quot; alt=&quot;Check Console Message&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">aws</title><link href="http://localhost:4000/blog/2021/01/05/aws-project.html" rel="alternate" type="text/html" title="aws" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-10T10:34:54+09:00</updated><id>http://localhost:4000/blog/2021/01/05/aws-project</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/aws-project.html">&lt;!--more--&gt;
 
-&lt;p&gt;If a table is small enough to fit the screen even on small screens, you can add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stretch-table&lt;/code&gt; class
-to force a table to use the entire available content width. Note that stretched tables can no longer be scrolled.&lt;/p&gt;
+&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#build&quot; id=&quot;markdown-toc-build&quot;&gt;Build&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
-&lt;table class=&quot;stretch-table&quot;&gt;
-  &lt;thead&gt;
-    &lt;tr&gt;
-      &lt;th&gt;Default aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: left&quot;&gt;Left aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: center&quot;&gt;Center aligned&lt;/th&gt;
-      &lt;th style=&quot;text-align: right&quot;&gt;Right aligned&lt;/th&gt;
-    &lt;/tr&gt;
-  &lt;/thead&gt;
-  &lt;tbody&gt;
-    &lt;tr&gt;
-      &lt;td&gt;First body part&lt;/td&gt;
-      &lt;td style=&quot;text-align: left&quot;&gt;Second cell&lt;/td&gt;
-      &lt;td style=&quot;text-align: center&quot;&gt;Third cell&lt;/td&gt;
-      &lt;td style=&quot;text-align: right&quot;&gt;fourth cell&lt;/td&gt;
-    &lt;/tr&gt;
-  &lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;p class=&quot;figcaption&quot;&gt;An optional caption for a table&lt;/p&gt;
-
-&lt;p&gt;You can add the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;stretch-table&lt;/code&gt; class to a markdown table by putting &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;{:.stretch-table}&lt;/code&gt; in line directly below the table.&lt;/p&gt;
-
-&lt;p&gt;Markdown:&lt;/p&gt;
-
-&lt;div class=&quot;language-markdown highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;| Default aligned |Left aligned| Center aligned  | Right aligned  |
-|-----------------|:-----------|:---------------:|---------------:|
-| First body part |Second cell | Third cell      | fourth cell    |
-{:.stretch-table}
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html">Hydejack 테마를 이용하여 포스트를 작성할때 참고할 syntax 입니다.</summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)</title><link href="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-09T17:09:34+09:00</updated><id>http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)</title><link href="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-10T10:42:14+09:00</updated><id>http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#express&quot; id=&quot;markdown-toc-express&quot;&gt;Express&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#install-express&quot; id=&quot;markdown-toc-install-express&quot;&gt;Install express&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#packagejson&quot; id=&quot;markdown-toc-packagejson&quot;&gt;package.json&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs&quot; id=&quot;markdown-toc-appjs&quot;&gt;app.js&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#packagejson&quot; id=&quot;markdown-toc-packagejson&quot;&gt;Package.json&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#appjs&quot; id=&quot;markdown-toc-appjs&quot;&gt;App.js&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#pug&quot; id=&quot;markdown-toc-pug&quot;&gt;Pug&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#router&quot; id=&quot;markdown-toc-router&quot;&gt;Router&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#folder-structure&quot; id=&quot;markdown-toc-folder-structure&quot;&gt;Folder Structure&lt;/a&gt;&lt;/li&gt;
@@ -260,7 +263,7 @@ npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nodemon &lt;span class
   &lt;p&gt;‘nodemon’은 파일 변경 감지 시 자동으로 서버를 재시작 시켜주는 편리한 도구입니다&lt;/p&gt;
 &lt;/blockquote&gt;
 
-&lt;h3 id=&quot;packagejson&quot;&gt;package.json&lt;/h3&gt;
+&lt;h3 id=&quot;packagejson&quot;&gt;Package.json&lt;/h3&gt;
 
 &lt;p&gt;package.json을 열어 제대로 설치가 완료되었는지 확인해보세요. &lt;br /&gt;
 ‘scripts’에 start를 지정해 nodemon을 사용하여 app을 동작시키도록 할 겁니다&lt;/p&gt;
@@ -285,7 +288,7 @@ npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;nodemon &lt;span class
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm start
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;appjs&quot;&gt;app.js&lt;/h3&gt;
+&lt;h3 id=&quot;appjs&quot;&gt;App.js&lt;/h3&gt;
 
 &lt;p&gt;이제 서버를 구동시켜 줄 메인 스크립트 파일을 만들 겁니다. 루트 경로에 app.js를 만들고 아래와 같이 설정합니다.&lt;br /&gt;
 기본적으로 서버는 3000번 포트를 사용하지만 원할 시 변경할 수 있습니다.&lt;/p&gt;
@@ -362,6 +365,6 @@ response 즉, 응답을 할건데 무엇을? index라는 템플릿을! 페이지
 &lt;h3 id=&quot;folder-structure&quot;&gt;Folder Structure&lt;/h3&gt;
 
 &lt;p&gt;전체 폴더 구조입니다. 궁금한 내용은 아래 댓글로 남겨주세요! &lt;br /&gt;
-다음 포스팅에서는 데이터베이스를 연결해서 CRUD 하는 내용을 진행하도록 하겠습니다.&lt;/p&gt;
+다음 포스팅에서는 Mongoose로 데이터베이스를 연결하는 내용을 진행하도록 하겠습니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-05/folder.png&quot; alt=&quot;FolderStructure&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry></feed>

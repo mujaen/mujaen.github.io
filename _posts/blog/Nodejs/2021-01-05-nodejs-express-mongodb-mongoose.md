@@ -29,7 +29,7 @@ npm install nodemon --save-dev
 
 > 'nodemon'은 파일 변경 감지 시 자동으로 서버를 재시작 시켜주는 편리한 도구입니다
 
-### package.json
+### Package.json
 
 package.json을 열어 제대로 설치가 완료되었는지 확인해보세요.   
 'scripts'에 start를 지정해 nodemon을 사용하여 app을 동작시키도록 할 겁니다 
@@ -57,7 +57,7 @@ npm start
 ```
 
 
-### app.js
+### App.js
 
 이제 서버를 구동시켜 줄 메인 스크립트 파일을 만들 겁니다. 루트 경로에 app.js를 만들고 아래와 같이 설정합니다.  
 기본적으로 서버는 3000번 포트를 사용하지만 원할 시 변경할 수 있습니다.
@@ -135,6 +135,6 @@ response 즉, 응답을 할건데 무엇을? index라는 템플릿을! 페이지
 ### Folder Structure
 
 전체 폴더 구조입니다. 궁금한 내용은 아래 댓글로 남겨주세요!   
-다음 포스팅에서는 데이터베이스를 연결해서 CRUD 하는 내용을 진행하도록 하겠습니다.
+다음 포스팅에서는 Mongoose로 데이터베이스를 연결하는 내용을 진행하도록 하겠습니다.
 
 ![FolderStructure](/assets/img/2021-01-05/folder.png)
