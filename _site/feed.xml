@@ -1,114 +1,50 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-10T10:52:09+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(3)</title><link href="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(3)" /><published>2021-01-10T00:00:00+09:00</published><updated>2021-01-10T10:34:46+09:00</updated><id>http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#mongodb&quot; id=&quot;markdown-toc-mongodb&quot;&gt;MongoDB&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#create-account&quot; id=&quot;markdown-toc-create-account&quot;&gt;Create Account&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#create-cluster&quot; id=&quot;markdown-toc-create-cluster&quot;&gt;Create Cluster&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#connect-to-cluster&quot; id=&quot;markdown-toc-connect-to-cluster&quot;&gt;Connect to Cluster&lt;/a&gt;&lt;/li&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-11T23:05:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">MongoDB + Mongoose 데이터 조작(1)</title><link href="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="MongoDB + Mongoose 데이터 조작(1)" /><published>2021-01-10T00:00:00+09:00</published><updated>2021-01-11T22:51:33+09:00</updated><id>http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#models&quot; id=&quot;markdown-toc-models&quot;&gt;Models&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#schema&quot; id=&quot;markdown-toc-schema&quot;&gt;Schema&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#model&quot; id=&quot;markdown-toc-model&quot;&gt;Model&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#mongoose&quot; id=&quot;markdown-toc-mongoose&quot;&gt;Mongoose&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#install-mongoose&quot; id=&quot;markdown-toc-install-mongoose&quot;&gt;Install Mongoose&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#appjs&quot; id=&quot;markdown-toc-appjs&quot;&gt;app.js&lt;/a&gt;&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#controllers&quot; id=&quot;markdown-toc-controllers&quot;&gt;Controllers&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;mongodb&quot;&gt;MongoDB&lt;/h2&gt;
+&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
 
-&lt;p&gt;데이터베이스를 관리하는 시스템(DBMS)에게 명령을 주고받아 DB의 데이터를 조작해야 하는데&lt;br /&gt;
-이때, DBMS가 사용자의 요청을 이해할 수 있도록 도와주는 언어가 바로 SQL이죠 대표적으로 MySQL이 있습니다 &lt;br /&gt;
-MongoDB는 NoSQL, 도큐먼트 지향 데이터베이스 시스템입니다. 이 둘의 특징과 차이점은 이번 포스팅에서 다루지 않습니다 &lt;br /&gt;
-DB를 만들고 서버에 연결해서 데이터를 CRUD하는 내용을 진행 하도록 하겠습니다.&lt;/p&gt;
+&lt;p&gt;지난 포스팅에서 Mongoose의 장점을 Express에 스키마와 모델을 적용할 수 있다고 했죠  &lt;br /&gt;
+스키마(schema)는 데이터베이스 문서의 값에 대해 타입을 정의해 주는 것이고 모델은 이러한 스키마를 &lt;br /&gt;
+인스턴스로 구성합니다. 즉, 객체로 인식시켜 DB의 값을 조회하고 업데이트할 수 있는 것이죠!  &lt;br /&gt;
+이번 포스팅에서는 지역명을 추가하고 업데이트하는 예제를 통해 데이터를 CRUD 하는 방법을 알아볼 겁니다&lt;/p&gt;
 
-&lt;h3 id=&quot;create-account&quot;&gt;Create Account&lt;/h3&gt;
+&lt;h3 id=&quot;schema&quot;&gt;Schema&lt;/h3&gt;
 
-&lt;p&gt;데이터베이스 생성을 위해 &lt;a href=&quot;https://www.mongodb.com/&quot;&gt;MongoDB&lt;/a&gt;에 접속해 주세요 &lt;br /&gt;
-저는 공부 목적이므로 Start free 버튼을 눌러 무료용으로 계정 가입을 할 겁니다.&lt;/p&gt;
+&lt;p&gt;루트 경로에 models로 폴더를 하나 생성하고 local.js 파일을 생성합니다&lt;br /&gt;
+먼저, 지역 스키마를 하나 만들어 주세요 지역을 추가할 때마다 배열에 객체로 담을 겁니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/join.png&quot; alt=&quot;Start Free&quot; /&gt;&lt;/p&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;schema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;blockquote&gt;
-  &lt;p&gt;MongoDB는 현재기준 무료계정으로 가입 시 512MB의 저장소를 제공하고 있습니다!&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LocalSchema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;schema&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
-&lt;h3 id=&quot;create-cluster&quot;&gt;Create Cluster&lt;/h3&gt;
-
-&lt;p&gt;계정을 생성한 뒤 build a Cluster 버튼을 눌러 새로운 클러스트를 만들어 줍니다.&lt;br /&gt;
-클라우드를 선택하는 화면이 나오면 원하는 옵션을 선택합니다. 저는 AWS로 선택하고 진행하겠습니다. &lt;br /&gt;
-대략 5-10분 정도 지나면 클러스터가 생성됩니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/connect.png&quot; alt=&quot;Create a New Cluster&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;connect-to-cluster&quot;&gt;Connect to Cluster&lt;/h3&gt;
-
-&lt;p&gt;화면 중간에 SANDBOX 영역에서 CONNECT 버튼을 눌러 레이어창이 나오면 단계별로 진행합니다.   &lt;br /&gt;
-IP를 입력해주고 DB에 사용될 아이디와 패스워드를 입력해 줍니다.&lt;br /&gt;
-다음 단계로 넘어가면 애플리케이션 연결(Connect your Application)을 눌러줍니다&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/code.png&quot; alt=&quot;Create a New Cluster&quot; /&gt;&lt;/p&gt;
-
-&lt;p&gt;마지막 단계입니다. 드라이버와 버전을 확인하고 우측의 Copy 버튼을 눌러 코드를 복사합니다&lt;br /&gt;
-Mongoose를 사용하여 복사한 코드를 입력해 서버와 DB를 연결할 겁니다&lt;/p&gt;
-
-&lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;
-
-&lt;p&gt;&lt;a href=&quot;https://mongoosejs.com/docs/guide.html&quot;&gt;Mongoose&lt;/a&gt;는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.  &lt;br /&gt;
-문서를 객체와 매칭한다 해서 ODM(Object Document Mapping)이라 하죠.&lt;br /&gt;
-Mongoose의 장점은 Express에 스키마와 모델을 적용할 수 있다는 장점이 있고&lt;br /&gt;
-그로 인하여 Collection을 수월하게 관리할 수 있다는 점 외에도 여러 기능이 있습니다.&lt;/p&gt;
-
-&lt;h3 id=&quot;install-mongoose&quot;&gt;Install Mongoose&lt;/h3&gt;
-
-&lt;p&gt;express 폴더를 열어주세요 이전 포스팅 그대로 이어서 진행하겠습니다.    &lt;br /&gt;
-터미널을 열고 아래의 명령어를 입력하여 Mongoose를 설치해 주세요&lt;/p&gt;
-
-&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;mongoose
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LocalSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;appjs&quot;&gt;app.js&lt;/h3&gt;
+&lt;h3 id=&quot;model&quot;&gt;Model&lt;/h3&gt;
 
-&lt;p&gt;Mongoose가 설치되었다면 이제 서버에 DB를 연결해 줄 겁니다. require로 Mongoose 모듈을 불러옵니다.&lt;br /&gt;
-아래의 DB 연결 부분을 봐주세요 저는 url을 변수로 사용하여 이전에 복사했던 코드를 넣어줄 겁니다.&lt;br /&gt;
-id와 password는 가입할 때 사용했던 그대로 입력해 줍니다. dbname은 사용하고자 하는 DB의 Collection명 입니다.&lt;/p&gt;
+&lt;p&gt;생성한 ‘LocalSchema’를 ‘Local’로 지정하여 모델을 하나 만들어 내보냅니다.&lt;/p&gt;
 
-&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;./routes/app&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//express 설정&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;__dirname&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;+&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/views&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;kd&quot;&gt;set&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;view engine&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;pug&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;/&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;router&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//서버 연결&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;server&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;listen&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Express server has started on port 3000&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;//DB 연결&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;  &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mongodb+srv://id:password@cluster0.dml5n.mongodb.net/dbname&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;url&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;useUnifiedTopology&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;useNewUrlParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// DB 연결 실패&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;on&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(){&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connection Failed!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;span class=&quot;c1&quot;&gt;// DB 연결 성공&lt;/span&gt;
-&lt;span class=&quot;nx&quot;&gt;db&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;once&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;open&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-    &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Connected!&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
-
-&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;blockquote&gt;
-  &lt;p&gt;connect 메서드를 사용하여 DB에 연결합니다 이때, 문자열 처리 관련해서 여러 매개 변수를 옵션으로 지정할 수 있습니다&lt;/p&gt;
-&lt;/blockquote&gt;
-
-&lt;p&gt;모든 작업이 완료되었다면 터미널을 열어 ‘npm start’ 명령을 입력하여 서버를 구동시켜 봅니다  &lt;br /&gt;
-DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력되는 것을 확인할 수 있습니다!&lt;/p&gt;
+&lt;h2 id=&quot;controllers&quot;&gt;Controllers&lt;/h2&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/terminal.png&quot; alt=&quot;Check Console Message&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)</title><link href="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)" /><published>2021-01-08T00:00:00+09:00</published><updated>2021-01-10T10:38:49+09:00</updated><id>http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#mongodb&quot; id=&quot;markdown-toc-mongodb&quot;&gt;MongoDB&lt;/a&gt;    &lt;ul&gt;
