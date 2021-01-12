@@ -20,7 +20,7 @@ DB를 만들고 Mongoose로 서버에 연결하는 내용을 진행 하도록 �
 
 ### Create Account
 
-데이터베이스 생성을 위해 [MongoDB](https://www.mongodb.com/)에 접속해 주세요   
+데이터베이스 생성을 위해 [MongoDB](https://www.mongodb.com/){: target="_blank"}에 접속해 주세요   
 저는 공부 목적이므로 Start free 버튼을 눌러 무료용으로 계정 가입을 할 겁니다.
 
 ![Start Free](/assets/img/2021-01-08/join.png)
@@ -48,7 +48,7 @@ Mongoose를 사용하여 복사한 코드를 입력해 서버와 DB를 연결할
 
 ## Mongoose
 
-[Mongoose](https://mongoosejs.com/docs/guide.html)는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.    
+[Mongoose](https://mongoosejs.com/docs/guide.html){: target="_blank"}는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.    
 문서를 객체와 매칭한다 해서 ODM(Object Document Mapping)이라 하죠.  
 Mongoose의 장점은 Express에 스키마와 모델을 적용할 수 있다는 장점이 있고  
 그로 인하여 Collection을 수월하게 관리할 수 있다는 점 외에도 여러 기능이 있습니다. 

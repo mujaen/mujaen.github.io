@@ -1,52 +1,154 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-11T23:05:21+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">MongoDB + Mongoose 데이터 조작(1)</title><link href="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="MongoDB + Mongoose 데이터 조작(1)" /><published>2021-01-10T00:00:00+09:00</published><updated>2021-01-11T22:51:33+09:00</updated><id>http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
-  &lt;li&gt;&lt;a href=&quot;#models&quot; id=&quot;markdown-toc-models&quot;&gt;Models&lt;/a&gt;    &lt;ul&gt;
-      &lt;li&gt;&lt;a href=&quot;#schema&quot; id=&quot;markdown-toc-schema&quot;&gt;Schema&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#model&quot; id=&quot;markdown-toc-model&quot;&gt;Model&lt;/a&gt;&lt;/li&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-12T23:23:12+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Mongoose(Express)로 MongoDB 데이터 추가하기(1)</title><link href="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Mongoose(Express)로 MongoDB 데이터 추가하기(1)" /><published>2021-01-10T00:00:00+09:00</published><updated>2021-01-12T23:21:50+09:00</updated><id>http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/10/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+  &lt;li&gt;&lt;a href=&quot;#model&quot; id=&quot;markdown-toc-model&quot;&gt;Model&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#defining-schema&quot; id=&quot;markdown-toc-defining-schema&quot;&gt;Defining Schema&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#creating-a-model&quot; id=&quot;markdown-toc-creating-a-model&quot;&gt;Creating a Model&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#controllers&quot; id=&quot;markdown-toc-controllers&quot;&gt;Controllers&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#view&quot; id=&quot;markdown-toc-view&quot;&gt;View&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#routes&quot; id=&quot;markdown-toc-routes&quot;&gt;Routes&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#pug&quot; id=&quot;markdown-toc-pug&quot;&gt;Pug&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#controller&quot; id=&quot;markdown-toc-controller&quot;&gt;Controller&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#body-parser&quot; id=&quot;markdown-toc-body-parser&quot;&gt;body-parser&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;models&quot;&gt;Models&lt;/h2&gt;
+&lt;h2 id=&quot;model&quot;&gt;Model&lt;/h2&gt;
 
 &lt;p&gt;지난 포스팅에서 Mongoose의 장점을 Express에 스키마와 모델을 적용할 수 있다고 했죠  &lt;br /&gt;
 스키마(schema)는 데이터베이스 문서의 값에 대해 타입을 정의해 주는 것이고 모델은 이러한 스키마를 &lt;br /&gt;
 인스턴스로 구성합니다. 즉, 객체로 인식시켜 DB의 값을 조회하고 업데이트할 수 있는 것이죠!  &lt;br /&gt;
-이번 포스팅에서는 지역명을 추가하고 업데이트하는 예제를 통해 데이터를 CRUD 하는 방법을 알아볼 겁니다&lt;/p&gt;
+이번 포스팅에서는 사용자를 추가하고 업데이트하는 예제를 통해 DB에 데이터를 추가 하는 방법을 알아볼 겁니다&lt;/p&gt;
 
-&lt;h3 id=&quot;schema&quot;&gt;Schema&lt;/h3&gt;
+&lt;h3 id=&quot;defining-schema&quot;&gt;Defining Schema&lt;/h3&gt;
 
-&lt;p&gt;루트 경로에 models로 폴더를 하나 생성하고 local.js 파일을 생성합니다&lt;br /&gt;
-먼저, 지역 스키마를 하나 만들어 주세요 지역을 추가할 때마다 배열에 객체로 담을 겁니다&lt;/p&gt;
+&lt;p&gt;루트 경로에 models로 폴더를 하나 생성하고 user.js 파일을 생성합니다 &lt;br /&gt;
+먼저, User 스키마를 하나 만들어 정의해 주세요 User를 추가할 때마다 result 배열에 객체로 담을 겁니다&lt;/p&gt;
 
 &lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;schema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
 
-&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LocalSchema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;schema&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserSchema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;schema&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
     &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;area&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
                 &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
             &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt;
-            &lt;span class=&quot;na&quot;&gt;status&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
-                &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+            &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
                 &lt;span class=&quot;na&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
             &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
         &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
-&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;collection&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
 
-&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;Local&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;LocalSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;UserSchema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;model&quot;&gt;Model&lt;/h3&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;스키마에 정의할 때는 객체의 key 값에 실제 DB 문서에 들어갈 타입을 지정할 수 있습니다&lt;br /&gt;
+이때, collection 이름을 옵션으로 지정하지 않는다면 collection 이름 뒤에 s가 자동으로 추가되니 지정하는 것이 좋습니다&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&lt;p&gt;생성한 ‘LocalSchema’를 ‘Local’로 지정하여 모델을 하나 만들어 내보냅니다.&lt;/p&gt;
+&lt;h3 id=&quot;creating-a-model&quot;&gt;Creating a Model&lt;/h3&gt;
 
-&lt;h2 id=&quot;controllers&quot;&gt;Controllers&lt;/h2&gt;
+&lt;p&gt;생성한 ‘UserSchema’를 ‘User’로 지정하여 모델을 하나 만들어 내보냅니다. &lt;br /&gt;
+이 모델을 가지고 함수를 사용해서 문서를 데이터베이스에 저장하고 조회할 수 있는데요    &lt;br /&gt;
+아래 예제와 같이 findOne 함수를 사용하여 원하는 객체에 대한 결과를 조회할 수 있습니다. &lt;br /&gt;
+자세한 내용은 &lt;a href=&quot;https://mongoosejs.com/docs/api/model.html&quot;&gt;Mongoose Model&lt;/a&gt; 공식 문서를 참고하세요!&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/terminal.png&quot; alt=&quot;Check Console Message&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)</title><link href="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)" /><published>2021-01-08T00:00:00+09:00</published><updated>2021-01-10T10:38:49+09:00</updated><id>http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;c1&quot;&gt;// callback&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;findOne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Jinjer&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;},&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// exec&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;findOne&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;Jinjer&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;32&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exec&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;()&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;현재 Mongoose는 4버전 이후부터 쿼리에서 then을 지원하고 있습니다 이전에는 프로미스를 사용하기 위해 exec()를&lt;br /&gt;
+반드시 붙여 사용해야 했는데요 최신 버전은 그럴 필요는 없지만 그래도 붙여주시는 것을 추천합니다.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;view&quot;&gt;View&lt;/h2&gt;
+
+&lt;p&gt;모델을 만들었으니 이제 유저를 등록할 페이지를 만들고 라우팅을 해보죠&lt;br /&gt;
+Pug와 Router 설정은 &lt;a href=&quot;https://mujaen.github.io/blog/2021/01/05/nodejs-express-mongodb-mongoose.html&quot; target=&quot;_blank&quot;&gt;지난 포스팅&lt;/a&gt;을 참고해 주세요!&lt;/p&gt;
+
+&lt;h3 id=&quot;routes&quot;&gt;Routes&lt;/h3&gt;
+
+&lt;h3 id=&quot;pug&quot;&gt;Pug&lt;/h3&gt;
+
+&lt;h2 id=&quot;controller&quot;&gt;Controller&lt;/h2&gt;
+
+&lt;p&gt;루트 경로에 controllers 폴더를 하나 생성하고 user.js 파일을 생성합니다&lt;br /&gt;
+require로 불러온 ‘User’모델을 사용자를 추가하는 함수를 만들어서 내보낼 겁니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;../models/user&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;registerUser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;async&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[]&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+    
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+        &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;req&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;body&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;age&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+
+    &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;data&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    
+    &lt;span class=&quot;nx&quot;&gt;User&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;user&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;result&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;redirect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;/user/register&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}).&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;};&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;result 배열에 생성한 data 객체를 담아서 create 함수로 전송한 뒤 redirect로 다시 페이지로 돌아올 겁니다&lt;br /&gt;
+그러나 전송을 해보니 undefined 에러가 발생합니다..&lt;/p&gt;
+
+&lt;h3 id=&quot;body-parser&quot;&gt;body-parser&lt;/h3&gt;
+
+&lt;p&gt;create함수를 사용하여 json형태로 서버로 값을 전송했는데 서버에서 값을 못찾아서 undefined 에러가 &lt;br /&gt;
+출력된다면 req.body 프로퍼티에 접근을 못해 원하는 데이터를 얻지 못하는 문제입니다 &lt;br /&gt;
+해결방법은 body-parser를 설치해서 사용해야 합니다 터미널을 열어 아래의 명령어를 입력해 줍니다.&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;body-parser
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;설치가 완료되면 메인 스크립트 파일인 app.js을 열어 bodyParser를 추가합니다   &lt;br /&gt;
+4.16버전 이후로는 body-parser가 express에 포함되어 따로 설치하지 않아도 됩니다!&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// Previous ver.4.16&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;bodyParser&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;body-parser&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bodyParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;urlencoded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extended&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;bodyParser&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+
+&lt;span class=&quot;c1&quot;&gt;// After ver.4.16&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;urlencoded&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;extended&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}));&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;app&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;use&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;express&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;json&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;());&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;body-parser의 urlencoded extended 옵션은 객체 안에 객체를 허용할 것(true)인지 아닌지(false)를 정합니다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/terminal.png&quot; alt=&quot;Check Console Message&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="nodejs" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)</title><link href="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(2)" /><published>2021-01-08T00:00:00+09:00</published><updated>2021-01-12T23:23:12+09:00</updated><id>http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/08/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#mongodb&quot; id=&quot;markdown-toc-mongodb&quot;&gt;MongoDB&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#create-account&quot; id=&quot;markdown-toc-create-account&quot;&gt;Create Account&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#create-cluster&quot; id=&quot;markdown-toc-create-cluster&quot;&gt;Create Cluster&lt;/a&gt;&lt;/li&gt;
@@ -70,7 +172,7 @@ DB를 만들고 Mongoose로 서버에 연결하는 내용을 진행 하도록 �
 
 &lt;h3 id=&quot;create-account&quot;&gt;Create Account&lt;/h3&gt;
 
-&lt;p&gt;데이터베이스 생성을 위해 &lt;a href=&quot;https://www.mongodb.com/&quot;&gt;MongoDB&lt;/a&gt;에 접속해 주세요 &lt;br /&gt;
+&lt;p&gt;데이터베이스 생성을 위해 &lt;a href=&quot;https://www.mongodb.com/&quot; target=&quot;_blank&quot;&gt;MongoDB&lt;/a&gt;에 접속해 주세요 &lt;br /&gt;
 저는 공부 목적이므로 Start free 버튼을 눌러 무료용으로 계정 가입을 할 겁니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-08/join.png&quot; alt=&quot;Start Free&quot; /&gt;&lt;/p&gt;
@@ -100,7 +202,7 @@ Mongoose를 사용하여 복사한 코드를 입력해 서버와 DB를 연결할
 
 &lt;h2 id=&quot;mongoose&quot;&gt;Mongoose&lt;/h2&gt;
 
-&lt;p&gt;&lt;a href=&quot;https://mongoosejs.com/docs/guide.html&quot;&gt;Mongoose&lt;/a&gt;는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.  &lt;br /&gt;
+&lt;p&gt;&lt;a href=&quot;https://mongoosejs.com/docs/guide.html&quot; target=&quot;_blank&quot;&gt;Mongoose&lt;/a&gt;는 Node.js와 MongoDB를 연결해 주는 ODM 라이브러리 중 가장 많이 쓰입니다.  &lt;br /&gt;
 문서를 객체와 매칭한다 해서 ODM(Object Document Mapping)이라 하죠.&lt;br /&gt;
 Mongoose의 장점은 Express에 스키마와 모델을 적용할 수 있다는 장점이 있고&lt;br /&gt;
 그로 인하여 Collection을 수월하게 관리할 수 있다는 점 외에도 여러 기능이 있습니다.&lt;/p&gt;
@@ -167,7 +269,7 @@ DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력�
   &lt;li&gt;&lt;a href=&quot;#build&quot; id=&quot;markdown-toc-build&quot;&gt;Build&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)</title><link href="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-10T10:42:14+09:00</updated><id>http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
+&lt;h2 id=&quot;build&quot;&gt;Build&lt;/h2&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)</title><link href="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html" rel="alternate" type="text/html" title="Node.js(Express)로 MongoDB(Mongoose) 연결하기(1)" /><published>2021-01-05T00:00:00+09:00</published><updated>2021-01-12T23:22:53+09:00</updated><id>http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/05/nodejs-express-mongodb-mongoose.html">&lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#express&quot; id=&quot;markdown-toc-express&quot;&gt;Express&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#install-express&quot; id=&quot;markdown-toc-install-express&quot;&gt;Install express&lt;/a&gt;&lt;/li&gt;
       &lt;li&gt;&lt;a href=&quot;#packagejson&quot; id=&quot;markdown-toc-packagejson&quot;&gt;Package.json&lt;/a&gt;&lt;/li&gt;
@@ -188,7 +290,7 @@ DB 연결에 성공하였다면 아래와 같이 터미널에 콘솔이 출력�
 &lt;h3 id=&quot;install-express&quot;&gt;Install express&lt;/h3&gt;
 
 &lt;p&gt;프로젝트 생성을 위해 폴더명을 express로 하나 만들어 줍니다.&lt;br /&gt;
-&lt;a href=&quot;https://nodejs.org/ko/download&quot;&gt;Node.js&lt;/a&gt;와 npm은 미리 설치되어 있다는 전제 하에 진행하도록 하겠습니다&lt;br /&gt;
+&lt;a href=&quot;https://nodejs.org/ko/download&quot; target=&quot;_blank&quot;&gt;Node.js&lt;/a&gt;와 npm은 미리 설치되어 있다는 전제 하에 진행하도록 하겠습니다&lt;br /&gt;
 터미널을 열고 아래의 명령어를 입력하여 express와 nodemon을 설치!&lt;/p&gt;
 
 &lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;npm &lt;span class=&quot;nb&quot;&gt;install &lt;/span&gt;express
@@ -293,7 +395,7 @@ html
 response 즉, 응답을 할건데 무엇을? index라는 템플릿을! 페이지에 렌더링 하여 보여주겠다는 내용입니다.&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;자세한 내용은 &lt;a href=&quot;https://expressjs.com/ko/guide/routing.html&quot;&gt;Express 라우팅가이드&lt;/a&gt;를 참조해 주세요&lt;/p&gt;
+  &lt;p&gt;자세한 내용은 &lt;a href=&quot;https://expressjs.com/ko/guide/routing.html&quot; target=&quot;_blank&quot;&gt;Express 라우팅가이드&lt;/a&gt;를 참조해 주세요&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-05/page.png&quot; alt=&quot;page&quot; /&gt;&lt;/p&gt;

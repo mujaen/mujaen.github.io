@@ -19,7 +19,7 @@ tags: nodejs
 ### Install express
 
 프로젝트 생성을 위해 폴더명을 express로 하나 만들어 줍니다.  
-[Node.js](https://nodejs.org/ko/download)와 npm은 미리 설치되어 있다는 전제 하에 진행하도록 하겠습니다  
+[Node.js](https://nodejs.org/ko/download){: target="_blank"}와 npm은 미리 설치되어 있다는 전제 하에 진행하도록 하겠습니다  
 터미널을 열고 아래의 명령어를 입력하여 express와 nodemon을 설치! 
 
 ```shell
@@ -127,7 +127,7 @@ module.exports = app;
 위의 예제를 한번 같이 보죠 app으로 정의된 라우팅은 '/' 루트인 URL을 get으로 받아    
 response 즉, 응답을 할건데 무엇을? index라는 템플릿을! 페이지에 렌더링 하여 보여주겠다는 내용입니다.   
 
-> 자세한 내용은 [Express 라우팅가이드](https://expressjs.com/ko/guide/routing.html)를 참조해 주세요
+> 자세한 내용은 [Express 라우팅가이드](https://expressjs.com/ko/guide/routing.html){: target="_blank"}를 참조해 주세요
 
 ![page](/assets/img/2021-01-05/page.png)
 

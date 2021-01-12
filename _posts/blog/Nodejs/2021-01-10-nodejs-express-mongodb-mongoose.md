@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "MongoDB + Mongoose 데이터 조작(1)"
-description: "Node.js + Mongoose 데이터 CRUD"
+title: "Mongoose(Express)로 MongoDB 데이터 추가하기(1)"
+description: "Node.js + Mongoose 데이터 추가하기"
 category: blog
 tags: nodejs
 ---
@@ -10,49 +10,142 @@ tags: nodejs
 * this unordered seed list will be replaced by the toc
 {:toc}
 
-## Models
+## Model
 
 지난 포스팅에서 Mongoose의 장점을 Express에 스키마와 모델을 적용할 수 있다고 했죠    
 스키마(schema)는 데이터베이스 문서의 값에 대해 타입을 정의해 주는 것이고 모델은 이러한 스키마를   
 인스턴스로 구성합니다. 즉, 객체로 인식시켜 DB의 값을 조회하고 업데이트할 수 있는 것이죠!    
-이번 포스팅에서는 지역명을 추가하고 업데이트하는 예제를 통해 데이터를 CRUD 하는 방법을 알아볼 겁니다     
+이번 포스팅에서는 사용자를 추가하고 업데이트하는 예제를 통해 DB에 데이터를 추가 하는 방법을 알아볼 겁니다     
 
 
-### Schema
+### Defining Schema
  
-루트 경로에 models로 폴더를 하나 생성하고 local.js 파일을 생성합니다  
-먼저, 지역 스키마를 하나 만들어 주세요 지역을 추가할 때마다 배열에 객체로 담을 겁니다
+루트 경로에 models로 폴더를 하나 생성하고 user.js 파일을 생성합니다   
+먼저, User 스키마를 하나 만들어 정의해 주세요 User를 추가할 때마다 result 배열에 객체로 담을 겁니다
 
 ```javascript
 const mongoose = require("mongoose");
 const schema = mongoose.Schema;
 
-const LocalSchema = new schema ({
+const UserSchema = new schema ({
     result: [
         {
-            area: {
+            name: {
                 type: String,
                 required: true
             },
-            status: {
-                type: String,
+            age: {
+                type: Number,
                 required: true
             }
         }
     ]
-});
+}, {collection: 'user'});
 
-module.exports = mongoose.model("Local", LocalSchema);
+module.exports = mongoose.model("User", UserSchema);
 ```
 
-### Model
+> 스키마에 정의할 때는 객체의 key 값에 실제 DB 문서에 들어갈 타입을 지정할 수 있습니다  
+> 이때, collection 이름을 옵션으로 지정하지 않는다면 collection 이름 뒤에 s가 자동으로 추가되니 지정하는 것이 좋습니다 
 
-생성한 'LocalSchema'를 'Local'로 지정하여 모델을 하나 만들어 내보냅니다. 
+### Creating a Model
+
+생성한 'UserSchema'를 'User'로 지정하여 모델을 하나 만들어 내보냅니다.   
+이 모델을 가지고 함수를 사용해서 문서를 데이터베이스에 저장하고 조회할 수 있는데요      
+아래 예제와 같이 findOne 함수를 사용하여 원하는 객체에 대한 결과를 조회할 수 있습니다.   
+자세한 내용은 [Mongoose Model](https://mongoosejs.com/docs/api/model.html) 공식 문서를 참고하세요!
+
+```javascript
+// callback
+User.findOne({ name: 'Jinjer', age: 32 }, (error, user) => {
+    
+});
+
+// exec
+User.findOne({ name: 'Jinjer', age: 32 }).exec()
+    .then(user => {
+        
+    })
+    .catch(error => console.log(error));
+```
+ 
+> 현재 Mongoose는 4버전 이후부터 쿼리에서 then을 지원하고 있습니다 이전에는 프로미스를 사용하기 위해 exec()를  
+> 반드시 붙여 사용해야 했는데요 최신 버전은 그럴 필요는 없지만 그래도 붙여주시는 것을 추천합니다. 
+
+## View
+
+모델을 만들었으니 이제 유저를 등록할 페이지를 만들고 라우팅을 해보죠  
+Pug와 Router 설정은 [지난 포스팅](https://mujaen.github.io/blog/2021/01/05/nodejs-express-mongodb-mongoose.html){: target="_blank"}을 참고해 주세요!
+
+
+### Routes
+
+
+### Pug
 
 
 
+## Controller
 
-## Controllers
+루트 경로에 controllers 폴더를 하나 생성하고 user.js 파일을 생성합니다  
+require로 불러온 'User'모델을 사용자를 추가하는 함수를 만들어서 내보낼 겁니다.
+
+```javascript
+const User = require('../models/user');
+
+exports.registerUser = async (req, res) => {
+    const user = new User({
+        result: []
+    });
+    
+    let data = {
+        name: req.body.name,
+        age: req.body.age
+    };
+
+    user.result.push(data);
+    
+    User.create({result: user.result})
+        .then((result) => {
+            res.redirect("/user/register");
+        }).catch((error) => {
+            console.log(error);
+    });
+};
+```
+
+result 배열에 생성한 data 객체를 담아서 create 함수로 전송한 뒤 redirect로 다시 페이지로 돌아올 겁니다  
+그러나 전송을 해보니 undefined 에러가 발생합니다.. 
+
+### body-parser
+
+create함수를 사용하여 json형태로 서버로 값을 전송했는데 서버에서 값을 못찾아서 undefined 에러가   
+출력된다면 req.body 프로퍼티에 접근을 못해 원하는 데이터를 얻지 못하는 문제입니다   
+해결방법은 body-parser를 설치해서 사용해야 합니다 터미널을 열어 아래의 명령어를 입력해 줍니다.
+
+```shell
+npm install body-parser
+```
+
+설치가 완료되면 메인 스크립트 파일인 app.js을 열어 bodyParser를 추가합니다     
+4.16버전 이후로는 body-parser가 express에 포함되어 따로 설치하지 않아도 됩니다!
+
+```javascript
+const express = require('express');
+const app = express();
+
+// Previous ver.4.16
+const bodyParser = require('body-parser');
+
+app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());
+
+// After ver.4.16
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
+```
+
+> body-parser의 urlencoded extended 옵션은 객체 안에 객체를 허용할 것(true)인지 아닌지(false)를 정합니다
 
 
 
