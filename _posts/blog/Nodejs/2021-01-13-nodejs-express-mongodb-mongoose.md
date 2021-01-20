@@ -18,6 +18,8 @@ tags: nodejs
  
 ![FolderStructure](/assets/img/2021-01-13/user.png)
 
+> 모든 파일 경로는 [지난 포스팅](https://mujaen.github.io/blog/2021/01/10/nodejs-express-mongodb-mongoose.html){: target="_blank"}에서 설정한 그대로 진행하니 참고해 주세요! 
+
 ### Defining Schema
  
 먼저, 스키마를 수정해 보죠 type 으로 유저를 구분할 것이기 때문에 값을 String으로 받는    

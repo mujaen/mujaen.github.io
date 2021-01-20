@@ -53,7 +53,7 @@ module.exports = mongoose.model("User", UserSchema);
 생성한 'UserSchema'를 'User'로 지정하여 모델을 하나 만들어 내보냅니다.   
 이 모델을 가지고 함수를 사용해서 문서를 데이터베이스에 저장하고 조회할 수 있는데요      
 아래 예제와 같이 findOne 함수를 사용하여 원하는 객체에 대한 결과를 조회할 수 있습니다.   
-자세한 내용은 [Mongoose Model](https://mongoosejs.com/docs/api/model.html) 공식 문서를 참고하세요!
+자세한 내용은 [Mongoose Model](https://mongoosejs.com/docs/api/model.html){: target="_blank"} 공식 문서를 참고하세요!
 
 ```javascript
 // callback
@@ -142,12 +142,10 @@ exports.registerUser = async (req, res) => {
         result: []
     });
     
-    let data = {
-        name: req.body.name,
-        age: req.body.age
-    };
-
-    user.result.push(data);
+    user.result.push({
+         name: req.body.name,
+         age: req.body.age
+     });
     
     User.create({result: user.result})
         .then((result) => {
