@@ -14,7 +14,7 @@ tags: aws
 ## Load Balancer
 
 들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로    
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 23일 기준 작성되었습니다.  
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 23일에 작성되었습니다.  
 [지난 포스팅](https://mujaen.github.io/blog/2021/01/21/aws-elastic-beanstalk.html){: target="_blank"}에서 Elastic Beanstalk 생성할 때 로드밸런서를 이용하기 위해서 반드시 추가 옵션 구성으로    
 로드밸런서를 등록해야 한다고 했었죠 이번 포스팅에서는 Application Load Balancer로 보안 인증서를 설정해 볼 겁니다       
 

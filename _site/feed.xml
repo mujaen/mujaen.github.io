@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-23T19:33:01+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)</title><link href="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)" /><published>2021-01-23T00:00:00+09:00</published><updated>2021-01-23T15:37:54+09:00</updated><id>http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-23T20:08:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)</title><link href="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)" /><published>2021-01-23T00:00:00+09:00</published><updated>2021-01-23T19:45:23+09:00</updated><id>http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#load-balancer&quot; id=&quot;markdown-toc-load-balancer&quot;&gt;Load Balancer&lt;/a&gt;    &lt;ul&gt;
@@ -12,7 +12,7 @@
 &lt;h2 id=&quot;load-balancer&quot;&gt;Load Balancer&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 23일 기준 작성되었습니다.&lt;br /&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 23일에 작성되었습니다.&lt;br /&gt;
 &lt;a href=&quot;https://mujaen.github.io/blog/2021/01/21/aws-elastic-beanstalk.html&quot; target=&quot;_blank&quot;&gt;지난 포스팅&lt;/a&gt;에서 Elastic Beanstalk 생성할 때 로드밸런서를 이용하기 위해서 반드시 추가 옵션 구성으로  &lt;br /&gt;
 로드밸런서를 등록해야 한다고 했었죠 이번 포스팅에서는 Application Load Balancer로 보안 인증서를 설정해 볼 겁니다&lt;/p&gt;
 
@@ -48,7 +48,7 @@ Application Load Balancer는 HTTP 및 HTTPS 트래픽을 사용하는 웹 애플
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;보안-설정-구성&quot;&gt;보안 설정 구성&lt;/h3&gt;
-&lt;p&gt;가용 영역(ap-northeast-2a~2d)을 지정했다면 페이지 하단의 다음을 눌러 보안 설정을 하도록 하죠&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(1)</title><link href="http://localhost:4000/blog/2021/01/22/aws-certificate-manager.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(1)" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-23T19:29:27+09:00</updated><id>http://localhost:4000/blog/2021/01/22/aws-certificate-manager</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/22/aws-certificate-manager.html">&lt;!--more--&gt;
+&lt;p&gt;가용 영역(ap-northeast-2a~2d)을 지정했다면 페이지 하단의 다음을 눌러 보안 설정을 하도록 하죠&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(1)</title><link href="http://localhost:4000/blog/2021/01/22/aws-certificate-manager.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(1)" /><published>2021-01-22T00:00:00+09:00</published><updated>2021-01-23T19:45:19+09:00</updated><id>http://localhost:4000/blog/2021/01/22/aws-certificate-manager</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/22/aws-certificate-manager.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#certificate-manager&quot; id=&quot;markdown-toc-certificate-manager&quot;&gt;Certificate Manager&lt;/a&gt;    &lt;ul&gt;
@@ -62,7 +62,7 @@ Application Load Balancer는 HTTP 및 HTTPS 트래픽을 사용하는 웹 애플
 &lt;h2 id=&quot;certificate-manager&quot;&gt;Certificate Manager&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 22일 기준 작성되었습니다.&lt;br /&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 22일에 작성되었습니다.&lt;br /&gt;
 AWS는 Certificate Manager에서 무료로 공인 인증서를 제공합니다 다만, 인증서를 적용할 로드밸런서는 요금이 부과됩니다&lt;br /&gt;
 이번 포스팅에서는 AWS의 Certificate Manager에서 무료로 보안 인증서를 만들어 볼 겁니다&lt;/p&gt;
 
@@ -101,7 +101,7 @@ Certificate Manager 설정 페이지에서 좌측 상단 ‘인증서 요청’ 
 검토를 진행하게 됩니다 &lt;a href=&quot;https://mujaen.github.io/blog/2021/01/18/aws-route-53.html&quot; target=&quot;_blank&quot;&gt;지난 포스팅&lt;/a&gt;에서 Route53에 DNS 정보를 등록해서 도메인을 연결했었죠    &lt;br /&gt;
 검증을 위해서 아래의 CNAME 기록을 Route53에 DNS 구성에 추가하면 검증이 완료됩니다&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-22/validation.png&quot; alt=&quot;Validation&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Elastic Beanstalk로 애플리케이션 등록과 관리</title><link href="http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk.html" rel="alternate" type="text/html" title="Elastic Beanstalk로 애플리케이션 등록과 관리" /><published>2021-01-21T00:00:00+09:00</published><updated>2021-01-21T17:58:15+09:00</updated><id>http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk.html">&lt;!--more--&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-22/validation.png&quot; alt=&quot;Validation&quot; /&gt;&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Elastic Beanstalk로 애플리케이션 등록과 관리</title><link href="http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk.html" rel="alternate" type="text/html" title="Elastic Beanstalk로 애플리케이션 등록과 관리" /><published>2021-01-21T00:00:00+09:00</published><updated>2021-01-23T19:45:15+09:00</updated><id>http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/21/aws-elastic-beanstalk.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#create&quot; id=&quot;markdown-toc-create&quot;&gt;Create&lt;/a&gt;    &lt;ul&gt;
@@ -117,7 +117,7 @@ Certificate Manager 설정 페이지에서 좌측 상단 ‘인증서 요청’ 
 &lt;h2 id=&quot;create&quot;&gt;Create&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 21일 기준 작성되었습니다. &lt;br /&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 21일에 작성되었습니다. &lt;br /&gt;
 Elastic Beanstalk는 구축한 애플리케이션 서버를 관리할 때 사용되죠 오늘은 Elastic Beanstalk의 환경을 &lt;br /&gt;
 생성해보고 관리하는 방법을 알아볼 겁니다.&lt;/p&gt;
 
@@ -175,7 +175,7 @@ Elastic Beanstalk는 구축한 애플리케이션 서버를 관리할 때 사용
 
 &lt;blockquote&gt;
   &lt;p&gt;Elastic Beanstalk 환경 설정은 전체메뉴의 컴퓨팅 - Elastic Beanstalk - 환경에서 설정할 수 있습니다.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Route53으로 도메인 DNS 쿼리 관리하기</title><link href="http://localhost:4000/blog/2021/01/18/aws-route-53.html" rel="alternate" type="text/html" title="Route53으로 도메인 DNS 쿼리 관리하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-23T19:33:01+09:00</updated><id>http://localhost:4000/blog/2021/01/18/aws-route-53</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/18/aws-route-53.html">&lt;!--more--&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Route53으로 도메인 DNS 쿼리 관리하기</title><link href="http://localhost:4000/blog/2021/01/18/aws-route-53.html" rel="alternate" type="text/html" title="Route53으로 도메인 DNS 쿼리 관리하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-23T20:05:03+09:00</updated><id>http://localhost:4000/blog/2021/01/18/aws-route-53</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/18/aws-route-53.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#route53&quot; id=&quot;markdown-toc-route53&quot;&gt;Route53&lt;/a&gt;    &lt;ul&gt;
@@ -188,14 +188,14 @@ Elastic Beanstalk는 구축한 애플리케이션 서버를 관리할 때 사용
 &lt;h2 id=&quot;route53&quot;&gt;Route53&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 22일 기준 작성되었습니다.&lt;br /&gt;
-AWS는 Certificate Manager에서 무료로 공인 인증서를 제공합니다 다만, 인증서를 적용할 로드밸런서는 요금이 부과됩니다&lt;br /&gt;
-이번 포스팅에서는 AWS의 Certificate Manager에서 무료로 보안 인증서를 만들어 볼 겁니다&lt;/p&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 18일에 작성되었습니다.  &lt;br /&gt;
+이번 포스팅에서는 DNS가 무엇이고 어떤 역할을 하는지에 대해서 설명하진 않을 겁니다.&lt;br /&gt;
+오늘은 Route53을 이용하여 호스팅 영역을 생성하고 DNS 쿼리로 도메인에 연결하는 방법을 알아 보도록 하죠&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-22/menu.png&quot; alt=&quot;Menu&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/menu.png&quot; alt=&quot;Menu&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;Certificate Manager 설정은 전체메뉴의 검색기능을 통해 접근할 수 있습니다.&lt;/p&gt;
+  &lt;p&gt;Route53 설정은 전체메뉴의 네트워킹 및 콘텐츠 전송 - Route 53에서 설정할 수 있습니다.&lt;/p&gt;
 &lt;/blockquote&gt;
 
 &lt;h3 id=&quot;호스팅-영역&quot;&gt;호스팅 영역&lt;/h3&gt;
@@ -208,15 +208,17 @@ Certificate Manager 설정 페이지에서 좌측 상단 ‘인증서 요청’ 
 
 &lt;p&gt;위의 옵션 중 ‘공인 인증서 요청’을 선택해 줍니다 아래 ‘인증서 요청’ 버튼을 눌러줍니다.&lt;/p&gt;
 
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/hostedzone.png&quot; alt=&quot;Hosted zone&quot; /&gt;&lt;/p&gt;
+
 &lt;h3 id=&quot;dns-쿼리&quot;&gt;DNS 쿼리&lt;/h3&gt;
 
 &lt;p&gt;도메인 이름을 추가해 주세요&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-22/domain.png&quot; alt=&quot;Domain&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/hostedzone.png&quot; alt=&quot;Hosted zone&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
   &lt;p&gt;다른 이름을 추가하면 사용자가 등록된 여러 도메인으로 접속할 수 있습니다&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)</title><link href="http://localhost:4000/blog/2021/01/17/aws-security-group.html" rel="alternate" type="text/html" title="EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)" /><published>2021-01-17T00:00:00+09:00</published><updated>2021-01-21T15:56:52+09:00</updated><id>http://localhost:4000/blog/2021/01/17/aws-security-group</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/17/aws-security-group.html">&lt;!--more--&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)</title><link href="http://localhost:4000/blog/2021/01/17/aws-security-group.html" rel="alternate" type="text/html" title="EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)" /><published>2021-01-17T00:00:00+09:00</published><updated>2021-01-23T19:45:10+09:00</updated><id>http://localhost:4000/blog/2021/01/17/aws-security-group</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/17/aws-security-group.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#ec2&quot; id=&quot;markdown-toc-ec2&quot;&gt;EC2&lt;/a&gt;&lt;/li&gt;
@@ -232,7 +234,7 @@ Certificate Manager 설정 페이지에서 좌측 상단 ‘인증서 요청’ 
 &lt;h2 id=&quot;ec2&quot;&gt;EC2&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 17일 기준 작성되었습니다. &lt;br /&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 17일에 작성되었습니다. &lt;br /&gt;
 EC2는 가상 서버를 구축하고 보안 및 네트워크 구성과 스토리지 관리를 지원하죠 오늘은 EC2의 보안설정을 통해  &lt;br /&gt;
 데이터베이스(RDS)를 보호하는 방법을 알아볼 겁니다.&lt;/p&gt;
 
@@ -297,7 +299,7 @@ EC2는 가상 서버를 구축하고 보안 및 네트워크 구성과 스토리
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-17/instance.png&quot; alt=&quot;Instance&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;상세페이지의 연결 섹션에서 검색을 통해 새로 만든 보안 그룹을 추가해주면 보안 그룹 설정이 완료됩니다.&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(1)</title><link href="http://localhost:4000/blog/2021/01/16/aws-security-group.html" rel="alternate" type="text/html" title="EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(1)" /><published>2021-01-16T00:00:00+09:00</published><updated>2021-01-21T15:56:47+09:00</updated><id>http://localhost:4000/blog/2021/01/16/aws-security-group</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/16/aws-security-group.html">&lt;!--more--&gt;
+&lt;p&gt;상세페이지의 연결 섹션에서 검색을 통해 새로 만든 보안 그룹을 추가해주면 보안 그룹 설정이 완료됩니다.&lt;/p&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(1)</title><link href="http://localhost:4000/blog/2021/01/16/aws-security-group.html" rel="alternate" type="text/html" title="EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(1)" /><published>2021-01-16T00:00:00+09:00</published><updated>2021-01-23T19:45:05+09:00</updated><id>http://localhost:4000/blog/2021/01/16/aws-security-group</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/16/aws-security-group.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#ec2&quot; id=&quot;markdown-toc-ec2&quot;&gt;EC2&lt;/a&gt;&lt;/li&gt;
@@ -313,7 +315,7 @@ EC2는 가상 서버를 구축하고 보안 및 네트워크 구성과 스토리
 &lt;h2 id=&quot;ec2&quot;&gt;EC2&lt;/h2&gt;
 
 &lt;p&gt;들어가기에 앞서, AWS는 사용 편의성과 성능 개선을 위해 주기적으로 화면을 업데이트 하므로  &lt;br /&gt;
-가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 16일 기준 작성되었습니다. &lt;br /&gt;
+가장 최신의 포스팅을 찾아 참고하시는 것을 추천합니다. 이 포스팅은 2021년 1월 16일에 작성되었습니다. &lt;br /&gt;
 EC2는 가상 서버를 구축하고 보안 및 네트워크 구성과 스토리지 관리를 지원하죠 오늘은 EC2의 보안설정을 통해  &lt;br /&gt;
 서버를 보호하는 방법을 알아볼 겁니다.&lt;/p&gt;
 
