@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-23T20:08:16+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)</title><link href="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)" /><published>2021-01-23T00:00:00+09:00</published><updated>2021-01-23T19:45:23+09:00</updated><id>http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html">&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.0">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2021-01-24T18:08:43+09:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">Jinjer’s Blog</title><subtitle>실무에 도움되는&lt;br&gt; 개발자 기술블로그.</subtitle><entry><title type="html">Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)</title><link href="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html" rel="alternate" type="text/html" title="Load Balancer로 SSL 보안 인증서(Https) 추가하기(2)" /><published>2021-01-23T00:00:00+09:00</published><updated>2021-01-23T19:45:23+09:00</updated><id>http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/23/aws-secure-socket-layer.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#load-balancer&quot; id=&quot;markdown-toc-load-balancer&quot;&gt;Load Balancer&lt;/a&gt;    &lt;ul&gt;
@@ -175,12 +175,17 @@ Elastic Beanstalk는 구축한 애플리케이션 서버를 관리할 때 사용
 
 &lt;blockquote&gt;
   &lt;p&gt;Elastic Beanstalk 환경 설정은 전체메뉴의 컴퓨팅 - Elastic Beanstalk - 환경에서 설정할 수 있습니다.&lt;/p&gt;
-&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Route53으로 도메인 DNS 쿼리 관리하기</title><link href="http://localhost:4000/blog/2021/01/18/aws-route-53.html" rel="alternate" type="text/html" title="Route53으로 도메인 DNS 쿼리 관리하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-23T20:05:03+09:00</updated><id>http://localhost:4000/blog/2021/01/18/aws-route-53</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/18/aws-route-53.html">&lt;!--more--&gt;
+&lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">Route53으로 도메인 DNS 쿼리 관리하기</title><link href="http://localhost:4000/blog/2021/01/18/aws-route-53.html" rel="alternate" type="text/html" title="Route53으로 도메인 DNS 쿼리 관리하기" /><published>2021-01-18T00:00:00+09:00</published><updated>2021-01-24T18:08:11+09:00</updated><id>http://localhost:4000/blog/2021/01/18/aws-route-53</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/18/aws-route-53.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
   &lt;li&gt;&lt;a href=&quot;#route53&quot; id=&quot;markdown-toc-route53&quot;&gt;Route53&lt;/a&gt;    &lt;ul&gt;
       &lt;li&gt;&lt;a href=&quot;#호스팅-영역&quot; id=&quot;markdown-toc-호스팅-영역&quot;&gt;호스팅 영역&lt;/a&gt;&lt;/li&gt;
-      &lt;li&gt;&lt;a href=&quot;#dns-쿼리&quot; id=&quot;markdown-toc-dns-쿼리&quot;&gt;DNS 쿼리&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#레코드&quot; id=&quot;markdown-toc-레코드&quot;&gt;레코드&lt;/a&gt;    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#www&quot; id=&quot;markdown-toc-www&quot;&gt;www.&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#ipv4&quot; id=&quot;markdown-toc-ipv4&quot;&gt;IPv4&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#application-load-balancer&quot; id=&quot;markdown-toc-application-load-balancer&quot;&gt;Application Load Balancer&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
@@ -200,24 +205,45 @@ Elastic Beanstalk는 구축한 애플리케이션 서버를 관리할 때 사용
 
 &lt;h3 id=&quot;호스팅-영역&quot;&gt;호스팅 영역&lt;/h3&gt;
 
-&lt;p&gt;인증서를 요청하기 전에 도메인은 미리 구입 하였다는 전제 하에 진행하도록 하죠   &lt;br /&gt;
-Certificate Manager 설정 페이지에서 좌측 상단 ‘인증서 요청’ 버튼을 눌러줍니다&lt;/p&gt;
-
-&lt;p&gt;공인 인증서 : ACM에서 발급하는 Amazon의 공인 인증서입니다 도메인 검증을 하기 때문에 별도의 알람이 발생하지 않습니다.&lt;br /&gt;
-사설 인증서 : 도메인 검증을 하지 않기 때문에 알람이 발생하는 사설 CA 기반 인증서입니다&lt;/p&gt;
-
-&lt;p&gt;위의 옵션 중 ‘공인 인증서 요청’을 선택해 줍니다 아래 ‘인증서 요청’ 버튼을 눌러줍니다.&lt;/p&gt;
-
-&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/hostedzone.png&quot; alt=&quot;Hosted zone&quot; /&gt;&lt;/p&gt;
-
-&lt;h3 id=&quot;dns-쿼리&quot;&gt;DNS 쿼리&lt;/h3&gt;
-
-&lt;p&gt;도메인 이름을 추가해 주세요&lt;/p&gt;
+&lt;p&gt;Route 53 대시보드에서 아래 그림의 호스팅 영역을 클릭해 주세요    &lt;br /&gt;
+페이지가 이동되었다면 호스팅 영역을 새로 만들어 보죠 ‘호스팅 영역 생성’ 버튼을 눌러 줍니다.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/hostedzone.png&quot; alt=&quot;Hosted zone&quot; /&gt;&lt;/p&gt;
 
 &lt;blockquote&gt;
-  &lt;p&gt;다른 이름을 추가하면 사용자가 등록된 여러 도메인으로 접속할 수 있습니다&lt;/p&gt;
+  &lt;p&gt;구입한 도메인 이름을 입력하고 ‘퍼블릭 호스팅 영역’ 유형을 선택한 뒤 호스팅 영역을 생성합니다&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;h2 id=&quot;레코드&quot;&gt;레코드&lt;/h2&gt;
+
+&lt;p&gt;호스팅 영역이 생성되고 자동으로 레코드가 2개 추가되어 있는 것을 확인 할 수 있습니다  &lt;br /&gt;
+추가 된 NS 유형의 레코드의 4개의 값을 도메인을 구입한 사이트에 등록해서 연결하는 겁니다!&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/record.png&quot; alt=&quot;Records&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;www&quot;&gt;www.&lt;/h3&gt;
+
+&lt;p&gt;www. 으로 접근했을 때를 대비해서 레코드를 하나 더 추가해야 합니다 ‘레코드 생성’ 버튼을 눌러 아래와 같이 추가합니다        &lt;br /&gt;
+이때, 레코드에 대한 별칭을 바꾸기 위해 우측의 별칭을 활성화해서 ‘이 호스팅 영역의 다른 레코드에 대한 별칭’을 선택합니다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/create.png&quot; alt=&quot;Create Record&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;ipv4&quot;&gt;IPv4&lt;/h3&gt;
+
+&lt;p&gt;Route53에서 만든 호스팅과 실제 인스턴스의 IP 주소가 연결이 되어야 도메인이 정상적으로 연결 됩니다      &lt;br /&gt;
+&lt;a href=&quot;https://mujaen.github.io/blog/2021/01/21/aws-elastic-beanstalk.html&quot; target=&quot;_blank&quot;&gt;지난 포스팅&lt;/a&gt;에서 자동으로 EC2 인스턴스가 생성되었죠 인스턴스에 퍼블릭 IPV4 주소가 있을 겁니다      &lt;br /&gt;
+이 IP를 가지고 도메인에 연결하기 위해서 IPv4 주소 정보인 A 유형 레코드를 하나 더 추가해 줘야 합니다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/public.png&quot; alt=&quot;Create A Record&quot; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;application-load-balancer&quot;&gt;Application Load Balancer&lt;/h3&gt;
+
+&lt;p&gt;만약 Application Load Balancer를 사용하여 라우팅 대상을 추가해야 한다면 레코드를 아래와 같이 설정해야 합니다&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/img/2021-01-18/alb.png&quot; alt=&quot;Create A Record&quot; /&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;IPv4 혹은 Application Load Balancer 둘 중 하나만 설정해서 총 4개의 레코드가 필요합니다&lt;/p&gt;
 &lt;/blockquote&gt;</content><author><name></name></author><category term="blog" /><category term="aws" /><summary type="html"></summary></entry><entry><title type="html">EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)</title><link href="http://localhost:4000/blog/2021/01/17/aws-security-group.html" rel="alternate" type="text/html" title="EC2로 서버와 데이터베이스(RDS) 보안그룹 설정하기(2)" /><published>2021-01-17T00:00:00+09:00</published><updated>2021-01-23T19:45:10+09:00</updated><id>http://localhost:4000/blog/2021/01/17/aws-security-group</id><content type="html" xml:base="http://localhost:4000/blog/2021/01/17/aws-security-group.html">&lt;!--more--&gt;
 
 &lt;ul id=&quot;markdown-toc&quot;&gt;
