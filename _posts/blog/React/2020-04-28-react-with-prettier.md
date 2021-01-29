@@ -13,15 +13,15 @@ tags: react
 
 ## Prettier
 
-이번 포스팅에서는 가장 대중적인 코드 포맷터인 Prettier를 적용해 보도록 하겠습니다  
+이번 포스팅에서는 가장 대중적인 코드 포맷터인 Prettier를 적용해 보도록 할 건데요   
 만약 Prittier 사용을 원하지 않는다면 다음 포스팅으로 넘어가도 전체적인 흐름에 영향이 없습니다     
-그럼 설치를 해보죠 터미널을 열어 아래의 명령어를 입력해 줍니다.
+IDE에서 린터를 지원하지 않는다면 따로 설치가 필요합니다 터미널을 열어 아래의 명령어를 입력해 줍니다.
 
 ```shell
 npm install --save-dev --save-exact prettier
 ```
 
-> --save-exact 옵션을 사용하면 버전이 바뀌면서 생기는 스타일의 변화에 대응할 수 있습니다
+> exact 옵션을 사용하면 버전이 바뀌면서 생기는 스타일의 변화에 대응할 수 있습니다
 
 ### .prettierignore
 
@@ -35,7 +35,7 @@ coverage
 
 ### 포맷
 
-Ignore 설정을 한 뒤 포맷을 하기 위해  터미널을 열고 아래의 명령어를 입력해 줍니다  
+Ignore 설정을 했다면 포맷을 하기 위해 터미널을 열고 아래의 명령어를 입력해 줍니다  
 'src' 경로의 파일 형식에 대해서만 포맷을 하겠습니다. 
 
 ```shell
@@ -46,7 +46,15 @@ npx prettier --write src/
 
 ## Options
 
-아래의 옵션을 사용하여 들여 쓰기, 공백 사용, 세미콜론, 브래킷 간격 등 옵션을 지정할 수 있습니다!      
+루트 경로에 prettier.config.js 파일을 하나 만들어 주세요   
+아래의 옵션을 사용하여 들여 쓰기, 공백 사용, 세미콜론, 브래킷 간격 등 포맷 시에 옵션을 지정할 수 있습니다
+
+```javascript
+module.exports = {
+    tabWidth: 4,
+    semi: false
+};
+```
 
 ### Tab Width
 
@@ -55,14 +63,6 @@ npx prettier --write src/
 |----|----|----|
 |Default|CLI Override|API Override|
 |2|--tab-width &lt;int&gt;|tabWidth: &lt;int&gt;|
-
-### Tabs
-
-공백 대신 탭으로 들여 쓰기 합니다 
-
-|----|----|----|
-|Default|CLI Override|API Override|
-|false|--use-tabs|useTabs: &lt;bool&gt;|
 
 ### Semicolons
 
@@ -73,7 +73,7 @@ npx prettier --write src/
 |true|--no-semi|semi: &lt;bool&gt;|
 
 
-> 이외에 옵션 사항은 [Prettier 공식문서](https://prettier.io/docs/en/options.html){: target="_blank"}를 참고해 주세요!
+> 이외에 추가 옵션 사항은 [Prettier 공식문서](https://prettier.io/docs/en/options.html){: target="_blank"}를 참고해 주세요!
  
 
 

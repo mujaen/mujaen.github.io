@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React 프로젝트 작업 환경 세팅하기"
+title: "React(Next.js)로 만드는 채팅 애플리케이션(1)"
 description: "create-react-app 사용하지 않고 프로젝트 생성"
 category: blog
 tags: react
@@ -81,37 +81,39 @@ npm i --save-dev parcel-bundler
 ```html
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Create React Project with Parcel</title>
-</head>
-<body>
-  <div id="app"></div>
-  <script src="app.js"></script>
-</body>
+    <head>
+        <meta charset="UTF-8" />
+        <title>Create React Project with Parcel</title>
+    </head>
+    <body>
+        <div id="app"></div>
+        <div id="app2"></div>
+        <script src="app.js"></script>
+    </body>
 </html>
 ``` 
 
 ### app.js
 
 생성한 'src' 폴더에 app.js 파일을 하나 만들어 주세요  
-ReactDOM의     
+State Hook을 사용해서 간단하게 메시지의 상태를 바꾸는 버튼을 만들어 보죠       
 
 ```javascript
-import React from "react";
+import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
-class User extends React.Component {
-    render() {
-        return <div>Good day, This is {this.props.name} from {this.props.city}</div>;
-    }
-}
+const App = () => {
+    const [message, setMessage] = useState("Will You Press The Button?");
 
-ReactDOM.render(
-    <User name="Jinjer" city="Seoul" />,
-    document.getElementById("app")
-);
+    return (
+        <div>
+            <p>{message}</p>
+            <button onClick={() => setMessage("Oops!")}>Click</button>
+        </div>
+    );
+};
 
+ReactDOM.render(<App />, document.getElementById("app"));
 ```
 
 ### 실행
