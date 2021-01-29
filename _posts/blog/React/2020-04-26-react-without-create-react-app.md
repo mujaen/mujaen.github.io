@@ -50,16 +50,23 @@ npm install --save-dev @babel/preset-core @babel/preset-env @babel/preset-react
 루트 경로에 .babelrc 파일을 만들어 지역 설정을 합니다 presets과 plugins 옵션을 아래와 같이 지정해 주세요     
 번들러에서 자동으로 루트 경로의 .babelrc 파일을 인식하고 적용할 겁니다   
 
-```javascript
-
-
-
+```
+{
+  "presets": [
+      ["@babel/preset-env", {
+            "targets": {
+                "browsers": ['> 1%', 'last 2 versions', 'Firefox ESR']
+            }
+      }],
+      ["@babel/preset-react"]
+  ]
+}
 ```
 
 
 ## Bundler
 
-Webpack 혹은 gulp를 자주 쓰는 편이지만 이번 프로젝트는 [Parcel](https://ko.parceljs.org/){: target="_blank"} 번들러를 사용하여 진행해 보겠습니다    
+Webpack 혹은 Rollup을 자주 쓰는 편이지만 이번 프로젝트는 [Parcel](https://ko.parceljs.org/){: target="_blank"} 번들러를 사용하여 진행해 보겠습니다    
 그럼 번들러를 설치해보죠 터미널을 열어 아래의 명령어를 입력해 줍니다.  
 
 ```shell
@@ -76,11 +83,11 @@ npm i --save-dev parcel-bundler
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>React with Parcel</title>
-  <script src="./index.js"></script>
+  <title>Create React Project with Parcel</title>
 </head>
 <body>
-    <div id="app"></div>
+  <div id="app"></div>
+  <script src="app.js"></script>
 </body>
 </html>
 ``` 
@@ -94,20 +101,32 @@ ReactDOM의
 import React from "react";
 import ReactDOM from "react-dom";
 
-class HelloMessage extends React.Component {
+class User extends React.Component {
     render() {
-        return <div>Hi, my name is {this.props.name}</div>;
+        return <div>Good day, This is {this.props.name} from {this.props.city}</div>;
     }
 }
 
 ReactDOM.render(
-    <HelloMessage name="Jinjer" />,
+    <User name="Jinjer" city="Seoul" />,
     document.getElementById("app")
 );
 
 ```
 
+### 실행
+ 
+package.json 파일을 열고 실행을 위한 스크립트를 추가해 줍니다.  
 
+```
+"scripts": {
+    "start": "parcel src/index.html",
+    "build": "parcel build src/index.html --public-url=./"
+}
+```
+
+> --public-url 옵션을 지정하게 되면 해당 파일을 기준으로 루트 경로가 설정됩니다!  
+ 
 터미널을 열어 아래의 명령어로 번들링한 파일을 서버에 띄워보겠습니다  
 
 ```shell
@@ -117,6 +136,7 @@ parcel src/index.html
   
 브라우저를 열고 주소창에 http://localhost:1234를 입력하여 정상적으로 페이지가 나온다면 성공입니다  
 
+![Local Page](/assets/img/2020-04-26/page.png)
  
 
 
