@@ -1,6 +1,6 @@
 ---
 layout: post
-title: "React(Next.js)로 만드는 채팅 애플리케이션(2)"
+title: "React + Socket.io로 만드는 채팅 애플리케이션(2)"
 description: "Prettier(Linter) 사용하기"
 category: blog
 tags: react
