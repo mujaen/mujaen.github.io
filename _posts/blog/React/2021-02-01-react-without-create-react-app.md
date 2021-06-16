@@ -15,8 +15,7 @@ tags: react
 
 * 이번 포스팅에서 진행할 예제는 1:1 채팅이 아닌 1:N 채팅입니다
 * 2개의 서버를 띄우고 Socket.io와 Socket.io-client로 양방향 통신을 할겁니다
-* Socket.io를 사용하는 Node.js(Express)와 MongoDB(Mongoose)로 서버를 구성합니다
-* React와 Socket.io-client를 사용하여 서버와 데이터를 주고 받을 겁니다
+* Socket.io를 사용하는 Node.js(Express)로 서버를 구성합니다
 
 
 ## Package.json
